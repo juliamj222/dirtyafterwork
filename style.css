@@ -1,0 +1,38 @@
+html, body {
+    height: 100%; /* Makes sure the page can fill the entire screen height */
+    margin: 0;
+    background-color: white;
+    font-family: 'Rock Salt', cursive; /* Sets our "scratched" font as the default */
+    color: #222; /* A dark gray instead of pure black is often easier on the eyes */
+}
+
+/* This container will center its content both vertically and horizontally */
+.main-container {
+    display: flex;
+    flex-direction: column; /* Stacks the text vertically */
+    justify-content: center; /* Centers vertically */
+    align-items: center; /* Centers horizontally */
+    height: 100%;
+    text-align: center;
+    padding: 20px; /* Adds some space on the sides for very small screens */
+    box-sizing: border-box;
+}
+
+/* Styling for the main title: "Dirty After Work" */
+h1 {
+    margin: 0;
+    font-weight: normal; /* The font is already bold, so we don't need extra weight */
+    
+    /* This is the key to responsive font size! */
+    /* It will be 10% of the viewport width, but no smaller than 2.5rem and no larger than 7rem. */
+    font-size: clamp(2.5rem, 10vw, 7rem);
+    line-height: 1.2;
+}
+
+/* Styling for the subtitle: "A Website." */
+p {
+    margin: 1rem 0 0 0; /* Adds a little space above the subtitle */
+    
+    /* Make this font responsive too, but smaller than the h1 */
+    font-size: clamp(1rem, 4vw, 2.2rem);
+}
