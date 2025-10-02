@@ -1,4 +1,12 @@
-/* --- NEW NAVIGATION STYLES --- */
+/* This sets the basic look for the whole page */
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: white;
+    /* RE-ADDED: This sets the unique font for elements that don't have their own specific font */
+    font-family: 'Rock Salt', cursive; 
+    color: #222;
+}
 
 /* Basic container for the links */
 .main-nav {
