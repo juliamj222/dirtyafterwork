@@ -33,14 +33,14 @@ h1 {
 
 /* Styling for the subtitle: "A Website." */
 p {
-    /* CHANGED MARGIN HERE: 3rem creates the requested space below the line */
-    margin: 0 0 3rem 0; 
-    
-    /* RE-ADDED: Sets the unique font for "A Website." */
-    font-family: 'Rock Salt', cursive;
+  /* CHANGED MARGIN HERE: 3rem creates the requested space below the line */
+  margin: 0 0 3rem 0; 
+  
+  /* KEEP THIS LINE to use the Rock Salt font */
+  font-family: 'Rock Salt', cursive; 
 
-    /* Make this font responsive too, but smaller than the h1 */
-    font-size: clamp(1rem, 4vw, 2.2rem);
+  /* Make this font responsive too, but smaller than the h1 */
+  font-size: clamp(1rem, 4vw, 2.2rem);
 }
 
 
