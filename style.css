@@ -10,17 +10,32 @@
     text-align: center;
 }
 
+/* Styling for the subtitle: "A Website." */
+p {
+    /* CHANGED MARGIN HERE: 3rem creates the requested space below the line */
+    margin: 0 0 3rem 0; 
+    
+    /* Make this font responsive too, but smaller than the h1 */
+    font-size: clamp(1rem, 4vw, 2.2rem);
+}
+
+
+
 /* Styling for the individual links */
 .main-nav a {
-    /* Inherits 'Rock Salt' font from body, but we can override if needed */
-    font-size: clamp(1rem, 3vw, 1.5rem); /* Responsive font size for links */
-    text-decoration: none; /* Removes the underline */
-    color: #444; /* Dark gray for a slight contrast */
-    padding: 0.5rem 1.5rem; /* Space around the text */
-    margin: 0.5rem; /* Space between the links */
-    border: 1px solid transparent; /* Prepare for hover effect */
-    transition: all 0.3s ease; /* Smooth transition for hover */
+    /* NEW FONT FAMILY HERE */
+    font-family: 'Heebo', sans-serif;
+    
+    font-size: clamp(1rem, 3vw, 1.5rem); 
+    text-decoration: none;
+    color: #444; 
+    padding: 0.5rem 1.5rem;
+    margin: 0.5rem;
+    border: 1px solid transparent; 
+    transition: all 0.3s ease;
 }
+
+
 
 /* Hover/Active State */
 .main-nav a:hover {
