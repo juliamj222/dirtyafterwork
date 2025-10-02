@@ -37,7 +37,7 @@ h1 {
 /* Styling for the subtitle: "A Website." */
 p {
     /* Sets the bottom margin to 3rem to create space before the navigation */
-    margin: 0 0 3rem 0; 
+    margin: 0 0 6rem 0; 
     
     font-family: 'Rock Salt', cursive; /* Ensures the scratched font is applied */
 
