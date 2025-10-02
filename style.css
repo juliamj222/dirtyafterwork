@@ -28,7 +28,10 @@ h1 {
     margin: 0;
     font-weight: normal; 
     font-family: 'Rock Salt', cursive; /* Ensures the scratched font is applied */
-    
+
+    /* Sets the bottom margin to 3rem to create space before the navigation */
+    margin: 0 0 3rem 0; 
+
     /* Responsive Font Size: Min 2.5rem, Max 7rem, adjusts based on 10% viewport width */
     font-size: clamp(2.5rem, 10vw, 7rem); 
     line-height: 1.2;
@@ -36,7 +39,7 @@ h1 {
 
 /* Styling for the subtitle: "A Website." */
 p {
-    /* Sets the bottom margin to 3rem to create space before the navigation */
+    /* Sets the bottom margin to 6rem to create space before the navigation */
     margin: 0 0 6rem 0; 
     
     font-family: 'Rock Salt', cursive; /* Ensures the scratched font is applied */
