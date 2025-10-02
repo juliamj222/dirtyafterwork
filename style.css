@@ -1,38 +1,41 @@
-html, body {
-    height: 100%; /* Makes sure the page can fill the entire screen height */
-    margin: 0;
-    background-color: white;
-    font-family: 'Rock Salt', cursive; /* Sets our "scratched" font as the default */
-    color: #222; /* A dark gray instead of pure black is often easier on the eyes */
-}
+/* --- NEW NAVIGATION STYLES --- */
 
-/* This container will center its content both vertically and horizontally */
-.main-container {
-    display: flex;
-    flex-direction: column; /* Stacks the text vertically */
-    justify-content: center; /* Centers vertically */
-    align-items: center; /* Centers horizontally */
-    height: 100%;
+/* Basic container for the links */
+.main-nav {
+    margin-top: 3rem; /* Creates space between the title and the menu */
+    display: flex; /* Uses flexbox for horizontal layout */
+    flex-wrap: wrap; /* Allows links to wrap to the next line on mobile */
+    justify-content: center; /* Centers the menu block */
+    max-width: 80vw; /* Ensures the nav doesn't stretch too wide */
     text-align: center;
-    padding: 20px; /* Adds some space on the sides for very small screens */
-    box-sizing: border-box;
 }
 
-/* Styling for the main title: "Dirty After Work" */
-h1 {
-    margin: 0;
-    font-weight: normal; /* The font is already bold, so we don't need extra weight */
-    
-    /* This is the key to responsive font size! */
-    /* It will be 10% of the viewport width, but no smaller than 2.5rem and no larger than 7rem. */
-    font-size: clamp(2.5rem, 10vw, 7rem);
-    line-height: 1.2;
+/* Styling for the individual links */
+.main-nav a {
+    /* Inherits 'Rock Salt' font from body, but we can override if needed */
+    font-size: clamp(1rem, 3vw, 1.5rem); /* Responsive font size for links */
+    text-decoration: none; /* Removes the underline */
+    color: #444; /* Dark gray for a slight contrast */
+    padding: 0.5rem 1.5rem; /* Space around the text */
+    margin: 0.5rem; /* Space between the links */
+    border: 1px solid transparent; /* Prepare for hover effect */
+    transition: all 0.3s ease; /* Smooth transition for hover */
 }
 
-/* Styling for the subtitle: "A Website." */
-p {
-    margin: 1rem 0 0 0; /* Adds a little space above the subtitle */
-    
-    /* Make this font responsive too, but smaller than the h1 */
-    font-size: clamp(1rem, 4vw, 2.2rem);
+/* Hover/Active State */
+.main-nav a:hover {
+    color: #000; /* Darkens the text on hover */
+    border-color: #000; /* Adds a scratchy-looking border on hover */
+    cursor: pointer;
+}
+
+/* Mobile Adjustments: Pushes the navigation up slightly on small screens */
+@media (max-width: 600px) {
+    .main-nav {
+        margin-top: 2rem;
+    }
+    .main-nav a {
+        padding: 0.5rem 1rem;
+        margin: 0.3rem;
+    }
 }
