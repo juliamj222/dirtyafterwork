@@ -98,7 +98,6 @@
             margin: 0 auto;
             text-align: center;
         }
-        /* NOTE: Removed H2 styling as the H2 tag is now gone from the HTML */
         
         .image-grid {
             display: grid;
@@ -106,22 +105,39 @@
             gap: 20px;
             margin-top: 30px;
         }
+        
+        /* UPDATED: We need to define a consistent height for the image container */
         .image-card {
             background-color: #f7f7f7;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            /* NEW: Defines a fixed height for the card's visual area */
+            height: 400px; 
+            display: flex; /* Helps ensure the caption stays put */
+            flex-direction: column;
         }
+        
+        /* UPDATED: This forces the image to fill the fixed height */
         .image-card img {
             width: 100%;
-            height: auto;
+            /* NEW: Fixed height for the image area */
+            height: 300px; 
             display: block;
+            /* NEW: This is the magic! It scales the image to fill the container and crops excess */
+            object-fit: cover; 
         }
+        
         .image-caption {
             font-family: 'Heebo', sans-serif;
             padding: 15px;
             font-size: 0.9rem;
             color: #555;
+            /* NEW: Uses remaining space in the 400px card height */
+            flex-grow: 1; 
+            display: flex;
+            align-items: center; /* Vertically centers the caption if needed */
+            justify-content: center;
         }
     </style>
 
@@ -152,26 +168,40 @@
         
         <div class="content-section">
             
-            <!-- Removed: <h2>The Visuals</h2> -->
-            <!-- Removed: <p>A selection of photos and art related to the project.</p> -->
-
- 
-              
-                       <div class="image-grid">
-
-  <div class="image-card">
-                    <img src="Plattsburgh.jpg" alt="Finding the Plattsburgh sound">
+            <div class="image-grid">
+                
+                <!-- PHOTO 1: UPLOAD THIS FILE TO YOUR REPOSITORY IN A FOLDER NAMED 'images' -->
+                <div class="image-card">
+                    <!-- CHANGE THE SRC TO YOUR IMAGE FILENAME, e.g., images/photo-one.jpg -->
+                    <img src="Plattsburgh.jpg" 
+                         alt="Finding the Plattsburgh sound"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" 
+                         loading="lazy">
                     <div class="image-caption">Finding the Plattsburgh sound.</div>
                 </div>
-                           
+                
+                <!-- PHOTO 2: REPLACE THIS BLOCK WITH YOUR SECOND PICTURE -->
                 <div class="image-card">
-                    <img src="TheFourth.jpg" alt="Fun hats">
+                    <!-- CHANGE THE SRC TO YOUR IMAGE FILENAME, e.g., images/photo-two.png -->
+                    <img src="TheFourth.jpg" 
+                         alt="Fun hats" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" 
+                         loading="lazy">
                     <div class="image-caption">Fun hats.</div>
                 </div>
+                
+                <!-- PHOTO 3: REPLACE THIS BLOCK WITH YOUR THIRD PICTURE -->
                 <div class="image-card">
-                    <img src="IMOnABoat.jpg" alt="Dirty on a boat">
+                    <!-- CHANGE THE SRC TO YOUR IMAGE FILENAME, e.g., images/album-art-concept.webp -->
+                    <img src="IMOnABoat.jpg" 
+                         alt="Dirty on a boat" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" 
+                         loading="lazy">
                     <div class="image-caption">Dirty on a boat.</div>
                 </div>
+                
+                <!-- TIP: To add more pictures, simply copy and paste an entire <div class="image-card"> block here! -->
+
             </div>
         </div>
 
@@ -208,8 +238,3 @@
 
 </body>
 </html>
-
-
-
-
-
