@@ -101,9 +101,27 @@
         
         .image-grid {
             display: grid;
+            /* Default: Responsive columns with min width 300px (good for tablet/mobile flow) */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             margin-top: 30px;
+        }
+        
+        /* NEW MEDIA QUERY: Forces 3 columns on desktop and sets slightly better height */
+        @media (min-width: 768px) {
+            .image-grid {
+                /* FORCED 3-COLUMN LAYOUT */
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .image-card {
+                /* Slightly taller card height for better desktop viewing */
+                height: 450px; 
+            }
+            .image-card img {
+                /* Slightly taller image area */
+                height: 350px; 
+            }
+        }
         
         /* UPDATED: We need to define a consistent height for the image container */
         .image-card {
@@ -138,9 +156,6 @@
             align-items: center; /* Vertically centers the caption if needed */
             justify-content: center;
         }
-
-                    }
-
     </style>
 
 </head>
@@ -240,4 +255,3 @@
 
 </body>
 </html>
-
