@@ -103,7 +103,7 @@
             display: grid;
             /* Default: Responsive columns with min width 300px (good for tablet/mobile flow) */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 10px;
             margin-top: 30px;
         }
         
@@ -115,11 +115,11 @@
             }
             .image-card {
                 /* Slightly taller card height for better desktop viewing */
-                height: 450px; 
+                /* NOTE: Height rule is removed here to allow flexible image ratio */
             }
-            .image-card img {
-                /* Slightly taller image area */
-                height: 350px; 
+            .image-image-container {
+                /* Sets the aspect ratio for the container */
+                padding-top: 75%; /* 4:3 aspect ratio (75% of width) */
             }
         }
         
@@ -129,20 +129,35 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            /* NEW: Defines a fixed height for the card's visual area */
-            height: 400px; 
-            display: flex; /* Helps ensure the caption stays put */
+            /* NEW: REMOVED FIXED HEIGHT to allow images to define the shape */
+            /* We still use flex for organizing the image and caption */
+            display: flex; 
             flex-direction: column;
         }
         
-        /* UPDATED: This forces the image to fill the fixed height */
+        /* NEW CONTAINER: This holds the image and enforces the aspect ratio */
+        .image-image-container {
+            position: relative;
+            width: 100%;
+            /* Percentage padding based on width creates responsive aspect ratio. 
+               100% = 1:1 square. 75% = 4:3. 56.25% = 16:9. We use a square for flexibility. */
+            padding-top: 100%; 
+            background-color: #ddd; /* Placeholder color behind the image */
+        }
+        
+        /* UPDATED: This image fills the container using 'contain' */
         .image-card img {
             width: 100%;
-            /* NEW: Fixed height for the image area */
-            height: 300px; 
+            height: 100%;
             display: block;
-            /* NEW: This is the magic! It scales the image to fill the container and crops excess */
-            object-fit: cover; 
+            
+            /* NEW: Absolute positioning to place it inside the padded container */
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            /* CHANGED: Scales the entire image to fit inside the container, adding white space (letterboxing) if needed */
+            object-fit: contain; 
         }
         
         .image-caption {
@@ -155,6 +170,7 @@
             display: flex;
             align-items: center; /* Vertically centers the caption if needed */
             justify-content: center;
+            min-height: 40px; /* Ensure space for one line of text */
         }
     </style>
 
@@ -189,31 +205,35 @@
                 
                 <!-- PHOTO 1: UPLOAD THIS FILE TO YOUR REPOSITORY IN A FOLDER NAMED 'images' -->
                 <div class="image-card">
-                    <!-- CHANGE THE SRC TO YOUR IMAGE FILENAME, e.g., images/photo-one.jpg -->
-                    <img src="Plattsburgh.jpg" 
-                         alt="Finding the Plattsburgh sound"
-                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" 
-                         loading="lazy">
+                    <!-- NEW: Image wrapper for aspect ratio control -->
+                    <div class="image-image-container">
+                        <img src="Plattsburgh.jpg" 
+                             alt="Finding the Plattsburgh sound"
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" 
+                             loading="lazy">
+                    </div>
                     <div class="image-caption">Finding the Plattsburgh sound.</div>
                 </div>
                 
                 <!-- PHOTO 2: REPLACE THIS BLOCK WITH YOUR SECOND PICTURE -->
                 <div class="image-card">
-                    <!-- CHANGE THE SRC TO YOUR IMAGE FILENAME, e.g., images/photo-two.png -->
-                    <img src="TheFourth.jpg" 
-                         alt="Fun hats" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" 
-                         loading="lazy">
+                    <div class="image-image-container">
+                        <img src="TheFourth.jpg" 
+                             alt="Fun hats" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" 
+                             loading="lazy">
+                    </div>
                     <div class="image-caption">Fun hats.</div>
                 </div>
                 
                 <!-- PHOTO 3: REPLACE THIS BLOCK WITH YOUR THIRD PICTURE -->
                 <div class="image-card">
-                    <!-- CHANGE THE SRC TO YOUR IMAGE FILENAME, e.g., images/album-art-concept.webp -->
-                    <img src="IMOnABoat.jpg" 
-                         alt="Dirty on a boat" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" 
-                         loading="lazy">
+                    <div class="image-image-container">
+                        <img src="IMOnABoat.jpg" 
+                             alt="Dirty on a boat" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" 
+                             loading="lazy">
+                    </div>
                     <div class="image-caption">Dirty on a boat.</div>
                 </div>
                 
