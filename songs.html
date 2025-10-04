@@ -45,11 +45,8 @@
             height: 70px; /* Fixed height for consistency */
         }
 
-        /* NEW STYLE: Padding for the entire body content to push it below the fixed header */
+        /* The main container only needs min-height, we'll push content down in .content-section */
         .main-container {
-            /* Adjust padding based on the header's height (70px + a little extra) */
-            padding-top: 90px;
-            /* Existing styles: */
             min-height: 100vh;
         }
 
@@ -90,7 +87,7 @@
         .main-nav a {
             font-size: 2rem; 
             margin: 1.5rem 0;
-            font-family: 'Heebo', sans-serif; 
+            font-family: 'Heebo', sans-serif; 
         }
 
         /* Hamburger icon bars */
@@ -107,8 +104,12 @@
         /* Main Content Wrapper */
         .content-section {
             font-family: 'Heebo', sans-serif;
-            padding: 40px 20px;
-            max-width: 800px; /* Adjusted width for music content */
+            
+            /* FIX: Add top padding equal to header height (70px) + content padding (40px) 
+               to push content below the fixed header. */
+            padding: 110px 20px 40px 20px; 
+            
+            max-width: 800px; 
             margin: 0 auto;
             text-align: center;
         }
@@ -116,8 +117,8 @@
         /* Desktop Margin Fix (Top and Bottom) */
         @media (min-width: 1024px) {
             .content-section {
-                /* Add substantial top/bottom padding to ensure content isn't cut off */
-                padding: 80px 20px;
+                /* On large screens, increase top padding further for visual space */
+                padding: 130px 20px 80px 20px;
             }
         }
 
@@ -172,8 +173,6 @@
             background-color: #ccc;
             border-radius: 50%;
         }
-
-        /* NOTE: All video/iframe related CSS has been removed. */
         
     </style>
 
@@ -271,11 +270,11 @@
             const menuButton = document.getElementById('menu-toggle-btn');
             const navMenu = document.getElementById('main-menu');
             
-            // NEW: Get all audio players on the page
+            // Get all audio players on the page
             const audioPlayers = document.querySelectorAll('.single-audio-player');
 
 
-            // --- Menu Toggle Logic (Kept the same) ---
+            // --- Menu Toggle Logic ---
             menuButton.addEventListener('click', () => {
                 const isExpanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
                 navMenu.classList.toggle('open');
@@ -292,7 +291,7 @@
                 });
             });
 
-            // --- Audio Control Logic (NEW) ---
+            // --- Audio Control Logic ---
             audioPlayers.forEach(player => {
                 // Attach a 'play' event listener to each player
                 player.addEventListener('play', (event) => {
