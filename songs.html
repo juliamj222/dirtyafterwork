@@ -46,8 +46,8 @@
             /* Consolidated padding */
             padding: 20px; 
             
-            /* FIX: Add margin to GUARANTEE separation from the first song card */
-            margin-bottom: 50px; 
+            /* FIX: Increased margin to GUARANTEE separation from the first song card */
+            margin-bottom: 80px; 
         }
 
         /* The main container is only a wrapper here */
@@ -110,7 +110,7 @@
         .content-section {
             font-family: 'Heebo', sans-serif;
             
-            /* Standard padding, removed the top padding that was causing conflict */
+            /* Cleaned up padding, relies on .page-header margin-bottom for top spacing */
             padding: 0 20px 40px 20px; 
             
             max-width: 800px; 
@@ -133,14 +133,14 @@
             display: flex;
             flex-direction: column;
             gap: 30px;
-            /* Removed unnecessary margin-top */
         }
         
         /* Styling for each song card/container */
         .song-card {
             background-color: #f7f7f7;
             border-radius: 8px;
-            padding: 20px;
+            /* REDUCED PADDING for smaller card height */
+            padding: 15px; 
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             text-align: left;
         }
@@ -155,7 +155,8 @@
         .song-card p {
             font-size: 1rem;
             color: #666;
-            margin-bottom: 20px;
+            /* REDUCED BOTTOM MARGIN for smaller space after text */
+            margin-bottom: 15px; 
         }
 
         /* Standard HTML5 Audio Controls */
@@ -212,7 +213,6 @@
                 <!-- SONG CARD 1: AUDIO FILE EXAMPLE -->
                 <div class="song-card">
                     <h2>Buy This Piece of Plastic </h2>
-                    <p>Placeholder.</p>
                     
                     <!-- HTML5 AUDIO PLAYER -->
                     <audio controls class="single-audio-player">
@@ -226,7 +226,6 @@
                 <!-- SONG CARD 2: AUDIO FILE EXAMPLE (Converted from Video) -->
                 <div class="song-card">
                     <h2>My Pals + Bender</h2>
-                    <p>Placeholder.</p>
                     
                     <!-- HTML5 AUDIO PLAYER -->
                     <audio controls class="single-audio-player">
@@ -240,7 +239,7 @@
                 <!-- SONG CARD 3: ANOTHER AUDIO EXAMPLE -->
                 <div class="song-card">
                     <h2>One More Beer</h2>
-                    <p>Placeholder.</p>
+ 
                     
                     <audio controls class="single-audio-player">
                         <source src="OneMoreBeer.mp3" type="audio/mpeg">
@@ -253,7 +252,7 @@
                 <!-- SONG CARD 4: ADDED MISSING ANCHOR TAG FOR LAST CARD -->
                 <div class="song-card">
                     <h2>Beds Are Burning (Midnight Oil cover)</h2>
-                    <p>Placeholder.</p>
+ 
                     
                     <audio controls class="single-audio-player">
                         <source src="BedsAreBurning.mp3" type="audio/mpeg">
