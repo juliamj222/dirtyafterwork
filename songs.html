@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Dirty After Work | Songs</title>
+    
+    <!-- External Dependencies: Load fonts (Rock Salt for headings, Heebo for body text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Shared Stylesheet for global rules -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Internal Page-Specific Styles (High-Specificity Overrides) -->
+    <style>
+        /* CSS Specificity Fix: Ensure H1 uses brand font and establishes header layout */
+        h1 {
+            font-family: 'Rock Salt', cursive !important; 
+            /* Push title away from the hamburger icon */
+            margin: 0 0 0 20px; 
+            font-size: clamp(2rem, 8vw, 4rem); 
+        }
+        
+        /* Layout: Flex container for header elements (icon and title) */
+        .page-header {
+            display: flex;
+            /* Align content to the far left */
+            justify-content: flex-start; 
+            align-items: center;
+            width: 100%;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        /* --- Global Off-Canvas Navigation Styles (Hamburger Menu) --- */
+        
+        /* Menu Toggle Button: Visible on all breakpoints */
+        .menu-toggle {
+            display: block; 
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001; /* Layering context above the nav overlay */
+        }
+        
+        /* Off-Canvas Navigation: Hidden by default (Full-screen overlay when open) */
+        .main-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.98); 
+            z-index: 1000;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Class added by JS to activate the menu overlay */
+        .main-nav.open {
+            display: flex;
+        }
+        
+        /* Navigation Links: Large, accessible touch targets */
+        .main-nav a {
+            font-size: 2rem; 
+            margin: 1.5rem 0;
+            font-family: 'Heebo', sans-serif; 
+        }
+
+        /* Hamburger icon bars */
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #333;
+            transition: all 0.3s ease-in-out;
+            border-radius: 2px;
+        }
+        
+        /* Main Content Wrapper */
+        .content-section {
+            font-family: 'Heebo', sans-serif;
+            padding: 40px 20px;
+            max-width: 800px; /* Adjusted width for music content */
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        /* --- SONG/MEDIA LIST STYLES --- */
+        
+        /* Layout for media items: single column */
+        .media-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        /* Styling for each song card/container */
+        .song-card {
+            background-color: #f7f7f7;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+
+        .song-card h2 {
+            font-family: 'Heebo', sans-serif;
+            font-size: 1.8rem;
+            margin-top: 0;
+            color: #333;
+        }
+
+        .song-card p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Standard HTML5 Audio Controls */
+        .song-card audio {
+            width: 100%; /* Make players fill the container */
+            margin-top: 10px;
+            border-radius: 4px;
+            /* Consistent styling for the native player */
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+        
+        /* Targeting the audio player elements for visual consistency */
+        .song-card audio::-webkit-media-controls-panel {
+            background-color: #eee;
+            color: #333;
+        }
+        .song-card audio::-webkit-media-controls-play-button {
+            background-color: #ccc;
+            border-radius: 50%;
+        }
+
+        /* NOTE: All video/iframe related CSS has been removed. */
+        
+    </style>
+
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <!-- Page Header -->
+        <header class="page-header">
+            <!-- Menu Toggle Button -->
+            <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu" id="menu-toggle-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            
+            <h1>Songs</h1>
+        </header>
+
+        <!-- Main Navigation Overlay -->
+        <nav class="main-nav" id="main-menu">
+            <a href="index.html">Home</a>
+            <a href="images.html">Pictures</a>
+            <a href="lyrics.html">Lyrics</a>
+            <a href="about.html">About</a>
+        </nav>
+        
+        <div class="content-section">
+            
+            <div class="media-list">
+                
+                <!-- SONG CARD 1: AUDIO FILE EXAMPLE -->
+                <div class="song-card">
+                    <h2>Song Title One (Audio)</h2>
+                    <p>A description of the song and its inspiration. **Upload your MP3 file** to a folder named 'music' on GitHub and update the source path below.</p>
+                    
+                    <!-- HTML5 AUDIO PLAYER: Replace 'song-one.mp3' with your actual file path -->
+                    <audio controls>
+                        <source src="music/song-one.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+
+                    <a href="lyrics.html#song-one" style="display: block; margin-top: 10px; text-align: right; color: #555; text-decoration: underline;">View Lyrics</a>
+                </div>
+                
+                <!-- SONG CARD 2: AUDIO FILE EXAMPLE (Converted from Video) -->
+                <div class="song-card">
+                    <h2>Song Title Two (Audio)</h2>
+                    <p>This track features the lead single from the album. **Upload your audio file** and update the source path below.</p>
+                    
+                    <!-- HTML5 AUDIO PLAYER: Replace 'song-two.mp3' with your actual file path -->
+                    <audio controls>
+                        <source src="music/song-two.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+
+                    <a href="lyrics.html#song-two" style="display: block; margin-top: 10px; text-align: right; color: #555; text-decoration: underline;">View Lyrics</a>
+                </div>
+                
+                <!-- SONG CARD 3: ANOTHER AUDIO EXAMPLE -->
+                <div class="song-card">
+                    <h2>Song Title Three (Audio)</h2>
+                    <p>A second audio track focusing on instrumental composition. **Update the source path** below.</p>
+                    
+                    <audio controls>
+                        <source src="music/song-three.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <!-- Duplicate a song card block above to add more content! -->
+                
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script: Menu Toggle Functionality (Same as other pages) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-toggle-btn');
+            const navMenu = document.getElementById('main-menu');
+
+            menuButton.addEventListener('click', () => {
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+                
+                // Toggle 'open' class on menu for visual state change
+                navMenu.classList.toggle('open');
+                
+                // Update ARIA for screen readers
+                menuButton.setAttribute('aria-expanded', !isExpanded);
+            });
+            
+            // Auto-close menu when a navigation link is clicked
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('open')) {
+                        navMenu.classList.remove('open');
+                        menuButton.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
