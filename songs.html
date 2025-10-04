@@ -95,6 +95,14 @@
             text-align: center;
         }
         
+        /* Desktop Margin Fix (Top and Bottom) */
+        @media (min-width: 1024px) {
+            .content-section {
+                /* Add substantial top/bottom padding to ensure content isn't cut off */
+                padding: 80px 20px;
+            }
+        }
+
         /* --- SONG/MEDIA LIST STYLES --- */
         
         /* Layout for media items: single column */
@@ -186,7 +194,7 @@
                     <p>Placeholder.</p>
                     
                     <!-- HTML5 AUDIO PLAYER -->
-                    <audio controls>
+                    <audio controls class="single-audio-player">
                         <source src="BuyThisPieceOfPlastic.mp3" type="audio/mpeg">
                         Your browser does not support the audio element.
                     </audio>
@@ -194,13 +202,13 @@
                     <a href="lyrics.html#song-one" style="display: block; margin-top: 10px; text-align: right; color: #555; text-decoration: underline;">View Lyrics</a>
                 </div>
                 
-                    <!-- HTML5 AUDIO PLAYER -->
+                <!-- SONG CARD 2: AUDIO FILE EXAMPLE (Converted from Video) -->
                 <div class="song-card">
                     <h2>My Pals + Bender</h2>
                     <p>Placeholder.</p>
                     
                     <!-- HTML5 AUDIO PLAYER -->
-                    <audio controls>
+                    <audio controls class="single-audio-player">
                         <source src="MyPals+W.mp3" type="audio/mpeg">
                         Your browser does not support the audio element.
                     </audio>
@@ -208,29 +216,30 @@
                     <a href="lyrics.html#song-two" style="display: block; margin-top: 10px; text-align: right; color: #555; text-decoration: underline;">View Lyrics</a>
                 </div>
                 
-                    <!-- HTML5 AUDIO PLAYER -->
+                <!-- SONG CARD 3: ANOTHER AUDIO EXAMPLE -->
                 <div class="song-card">
                     <h2>One More Beer</h2>
                     <p>Placeholder.</p>
                     
-                    <audio controls>
+                    <audio controls class="single-audio-player">
                         <source src="OneMoreBeer.mp3" type="audio/mpeg">
                         Your browser does not support the audio element.
                     </audio>
-                </div>
-
-                    <a href="lyrics.html#song-four" style="display: block; margin-top: 10px; text-align: right; color: #555; text-decoration: underline;">View Lyrics</a>
+                    
+                    <a href="lyrics.html#song-three" style="display: block; margin-top: 10px; text-align: right; color: #555; text-decoration: underline;">View Lyrics</a>
                 </div>
                 
-                    <!-- HTML5 AUDIO PLAYER -->
+                <!-- SONG CARD 4: ADDED MISSING ANCHOR TAG FOR LAST CARD -->
                 <div class="song-card">
                     <h2>Beds Are Burning</h2>
                     <p>Placeholder.</p>
                     
-                    <audio controls>
+                    <audio controls class="single-audio-player">
                         <source src="BedsAreBurning.mp3" type="audio/mpeg">
                         Your browser does not support the audio element.
                     </audio>
+                    
+                    <a href="lyrics.html#song-four" style="display: block; margin-top: 10px; text-align: right; color: #555; text-decoration: underline;">View Lyrics</a>
                 </div>
                 
             </div>
@@ -238,19 +247,20 @@
 
     </div>
 
-    <!-- Script: Menu Toggle Functionality (Same as other pages) -->
+    <!-- Script: Menu Toggle Functionality and Audio Control Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuButton = document.getElementById('menu-toggle-btn');
             const navMenu = document.getElementById('main-menu');
+            
+            // NEW: Get all audio players on the page
+            const audioPlayers = document.querySelectorAll('.single-audio-player');
 
+
+            // --- Menu Toggle Logic (Kept the same) ---
             menuButton.addEventListener('click', () => {
                 const isExpanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
-                
-                // Toggle 'open' class on menu for visual state change
                 navMenu.classList.toggle('open');
-                
-                // Update ARIA for screen readers
                 menuButton.setAttribute('aria-expanded', !isExpanded);
             });
             
@@ -263,9 +273,23 @@
                     }
                 });
             });
+
+            // --- Audio Control Logic (NEW) ---
+            audioPlayers.forEach(player => {
+                // Attach a 'play' event listener to each player
+                player.addEventListener('play', (event) => {
+                    // When this player starts, iterate through ALL players
+                    audioPlayers.forEach(otherPlayer => {
+                        // Check if the other player is NOT the one that just started AND it's currently playing
+                        if (otherPlayer !== event.target && !otherPlayer.paused) {
+                            // If it is, pause the other player
+                            otherPlayer.pause();
+                        }
+                    });
+                });
+            });
         });
     </script>
 
 </body>
 </html>
-
