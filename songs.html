@@ -31,24 +31,21 @@
             font-size: clamp(2rem, 8vw, 4rem); 
         }
         
-        /* --- Page Header Layout (Fixed Position) --- */
+        /* --- Page Header Layout (Now RELATIVE/SCROLLING) --- */
         
-        /* CONSOLIDATED RULE: This defines the fixed header behavior and display */
+        /* CONSOLIDATED RULE: Defines the header layout using styles from pictures.html */
         .page-header {
             display: flex;
             /* Align content to the far left */
             justify-content: flex-start; 
             align-items: center;
             width: 100%;
-            /* Make header fixed so it stays when scrolling */
-            position: fixed; 
-            top: 0;
-            left: 0;
-            background: white; /* Ensure header content is always visible */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
-            z-index: 999;
-            padding: 0 20px; /* Padding for the left/right edges */
-            height: 70px; /* Fixed height for consistency */
+            /* RESTORED: Header is now relative and scrolls with the page content */
+            position: relative; 
+            padding: 0 20px;
+            /* Added padding for visual space above and below the header content */
+            padding-top: 20px;
+            padding-bottom: 20px;
         }
 
         /* The main container is only a wrapper here */
@@ -111,8 +108,8 @@
         .content-section {
             font-family: 'Heebo', sans-serif;
             
-            /* FIX: Use PADDING to push content down. 70px header + 80px buffer = 150px top padding */
-            padding: 150px 20px 40px 20px; 
+            /* RESTORED PADDING for standard content separation */
+            padding: 40px 20px; 
             
             max-width: 800px; 
             margin: 0 auto;
@@ -122,8 +119,8 @@
         /* Desktop Margin Fix (Top and Bottom) */
         @media (min-width: 1024px) {
             .content-section {
-                /* FIX: Increase top padding further for desktop safety. 70px header + 110px buffer = 180px top padding */
-                padding: 180px 20px 80px 20px;
+                /* Larger bottom padding on desktop */
+                padding-bottom: 80px; 
             }
         }
 
