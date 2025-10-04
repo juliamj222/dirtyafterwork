@@ -128,11 +128,21 @@
 
         /* --- SONG/MEDIA LIST STYLES --- */
         
-        /* Layout for media items: single column */
+        /* Layout for media items: Responsive Grid */
         .media-list {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            /* Default to single column on mobile/tablet */
+            grid-template-columns: 1fr;
             gap: 30px;
+        }
+
+        /* Desktop Override: 2-column layout for screens wider than 768px */
+        @media (min-width: 768px) {
+            .media-list {
+                /* Forces 2 columns side-by-side (2x2 grid for 4 items) */
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 40px; /* Slightly increase gap for desktop */
+            }
         }
         
         /* Styling for each song card/container */
@@ -213,6 +223,7 @@
                 <!-- SONG CARD 1: AUDIO FILE EXAMPLE -->
                 <div class="song-card">
                     <h2>Buy This Piece of Plastic </h2>
+                    <p>Placeholder.</p>
                     
                     <!-- HTML5 AUDIO PLAYER -->
                     <audio controls class="single-audio-player">
@@ -226,6 +237,7 @@
                 <!-- SONG CARD 2: AUDIO FILE EXAMPLE (Converted from Video) -->
                 <div class="song-card">
                     <h2>My Pals + Bender</h2>
+                    <p>Placeholder.</p>
                     
                     <!-- HTML5 AUDIO PLAYER -->
                     <audio controls class="single-audio-player">
@@ -239,7 +251,7 @@
                 <!-- SONG CARD 3: ANOTHER AUDIO EXAMPLE -->
                 <div class="song-card">
                     <h2>One More Beer</h2>
- 
+                    <p>Placeholder.</p>
                     
                     <audio controls class="single-audio-player">
                         <source src="OneMoreBeer.mp3" type="audio/mpeg">
@@ -252,7 +264,7 @@
                 <!-- SONG CARD 4: ADDED MISSING ANCHOR TAG FOR LAST CARD -->
                 <div class="song-card">
                     <h2>Beds Are Burning (Midnight Oil cover)</h2>
- 
+                    <p>Placeholder.</p>
                     
                     <audio controls class="single-audio-player">
                         <source src="BedsAreBurning.mp3" type="audio/mpeg">
