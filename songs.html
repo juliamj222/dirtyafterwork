@@ -105,8 +105,11 @@
         .content-section {
             font-family: 'Heebo', sans-serif;
             
-            /* FIX: Set top padding to clear the 70px header plus a 40px buffer */
-            padding: 110px 20px 40px 20px; 
+            /* FIX: AGGRESSIVE PADDING. 70px header + 70px buffer = 140px */
+            padding-top: 140px; 
+            padding-bottom: 40px; 
+            padding-left: 20px;
+            padding-right: 20px;
             
             max-width: 800px; 
             margin: 0 auto;
@@ -116,8 +119,11 @@
         /* Desktop Margin Fix (Top and Bottom) */
         @media (min-width: 1024px) {
             .content-section {
-                /* On large screens, increase top padding further for visual space */
-                padding: 130px 20px 80px 20px;
+                /* On large screens, increase top padding further for visual space. 70px header + 90px buffer = 160px */
+                padding-top: 160px;
+                padding-bottom: 80px;
+                padding-left: 20px;
+                padding-right: 20px;
             }
         }
 
@@ -128,7 +134,7 @@
             display: flex;
             flex-direction: column;
             gap: 30px;
-            /* REMOVED: margin-top: 30px; to ensure top padding is only controlled by .content-section */
+            /* margin-top removed to ensure top padding is only controlled by .content-section */
         }
         
         /* Styling for each song card/container */
@@ -195,7 +201,7 @@
         <!-- Main Navigation Overlay -->
         <nav class="main-nav" id="main-menu">
             <a href="index.html">Home</a>
-            <a href="images.html">Pictures</a>
+            <a href="pictures.html">Pictures</a>
             <a href="lyrics.html">Lyrics</a>
             <a href="about.html">About</a>
         </nav>
