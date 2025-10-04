@@ -6,29 +6,29 @@
     
     <title>Dirty After Work | Pictures</title>
     
-    <!-- Required Font Links (Must be included in every page) -->
+    <!-- External Dependencies: Load fonts (Rock Salt for headings, Heebo for body text) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- Links to your shared stylesheet -->
+    <!-- Shared Stylesheet for global rules -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Simple, temporary internal styles for the gallery on this page -->
+    <!-- Internal Page-Specific Styles (High-Specificity Overrides) -->
     <style>
-        /* FIX: Forcing H1 to use Rock Salt font for this page title */
+        /* CSS Specificity Fix: Ensure H1 uses brand font and establishes header layout */
         h1 {
             font-family: 'Rock Salt', cursive !important; 
-            /* NEW MARGIN: 0px top/right/bottom, 20px left (after the hamburger) */
+            /* Push title away from the hamburger icon */
             margin: 0 0 0 20px; 
-            font-size: clamp(2rem, 8vw, 4rem); /* Standard title size across all screens */
+            font-size: clamp(2rem, 8vw, 4rem); 
         }
         
-        /* HEADER LAYOUT: Puts the title (left) and menu button (right) side-by-side on ALL screens */
+        /* Layout: Flex container for header elements (icon and title) */
         .page-header {
             display: flex;
-            /* CHANGED: Aligns items to the left (start) instead of spacing them apart */
+            /* Align content to the far left */
             justify-content: flex-start; 
             align-items: center;
             width: 100%;
@@ -36,50 +36,46 @@
             padding: 0 20px;
         }
 
-        /* --- HAMBURGER MENU STYLES (ALWAYS VISIBLE) --- */
+        /* --- Global Off-Canvas Navigation Styles (Hamburger Menu) --- */
         
-        /* Show the toggle button on ALL screens (overrides default display: none) */
+        /* Menu Toggle Button: Visible on all breakpoints */
         .menu-toggle {
             display: block; 
             background: none;
             border: none;
             cursor: pointer;
             padding: 10px;
-            z-index: 1001; /* Must be above the navigation overlay */
+            z-index: 1001; /* Layering context above the nav overlay */
         }
         
-        /* --- NAVIGATION MENU (ALWAYS HIDDEN BY DEFAULT) --- */
-
+        /* Off-Canvas Navigation: Hidden by default (Full-screen overlay when open) */
         .main-nav {
-            /* Initially hide the menu on all screens */
             display: none;
-            /* When open, it will act as a full-screen overlay */
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.98); /* Near-opaque white overlay */
+            background-color: rgba(255, 255, 255, 0.98); 
             z-index: 1000;
-            flex-direction: column; /* Stack links vertically */
+            flex-direction: column; 
             justify-content: center;
             align-items: center;
         }
 
-        /* Class added by JavaScript when the button is clicked */
+        /* Class added by JS to activate the menu overlay */
         .main-nav.open {
             display: flex;
         }
         
-        /* Styling for the large, centered links in the open menu */
+        /* Navigation Links: Large, accessible touch targets */
         .main-nav a {
-            font-size: 2rem; /* Larger touch targets for menu links */
+            font-size: 2rem; 
             margin: 1.5rem 0;
-            /* Inherited from style.css, but explicitly set for clarity */
-            font-family: 'Heebo', sans-serif; 
+            font-family: 'Heebo', sans-serif; 
         }
 
-        /* Hamburger icon bars (no change) */
+        /* Hamburger icon bars */
         .bar {
             display: block;
             width: 25px;
@@ -90,7 +86,7 @@
             border-radius: 2px;
         }
         
-        /* Content Section Styles (no change) */
+        /* Main Content Wrapper */
         .content-section {
             font-family: 'Heebo', sans-serif;
             padding: 40px 20px;
@@ -99,78 +95,70 @@
             text-align: center;
         }
         
+        /* Image Grid Layout (Mobile/Tablet Default) */
         .image-grid {
             display: grid;
-            /* Default: Responsive columns with min width 300px (good for tablet/mobile flow) */
+            /* Auto-fit columns, ensuring a minimum width of 300px per card */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 10px;
             margin-top: 30px;
         }
         
-        /* NEW MEDIA QUERY: Forces 3 columns on desktop and sets slightly better height */
+        /* Media Query: Desktop Override for fixed 3-Column Layout */
         @media (min-width: 768px) {
             .image-grid {
-                /* FORCED 3-COLUMN LAYOUT */
                 grid-template-columns: repeat(3, 1fr);
             }
-            .image-card {
-                /* Slightly taller card height for better desktop viewing */
-                /* NOTE: Height rule is removed here to allow flexible image ratio */
-            }
             .image-image-container {
-                /* Sets the aspect ratio for the container */
-                padding-top: 75%; /* 4:3 aspect ratio (75% of width) */
+                /* Adjust aspect ratio for a wider desktop view, using a 4:3 ratio */
+                padding-top: 75%; 
             }
         }
         
-        /* UPDATED: We need to define a consistent height for the image container */
+        /* Image Card Container Styling */
         .image-card {
             background-color: #f7f7f7;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            /* NEW: REMOVED FIXED HEIGHT to allow images to define the shape */
-            /* We still use flex for organizing the image and caption */
+            /* Use Flex to stack image container and caption */
             display: flex; 
             flex-direction: column;
         }
         
-        /* NEW CONTAINER: This holds the image and enforces the aspect ratio */
+        /* Image Aspect Ratio Wrapper */
         .image-image-container {
             position: relative;
             width: 100%;
-            /* Percentage padding based on width creates responsive aspect ratio. 
-               100% = 1:1 square. 75% = 4:3. 56.25% = 16:9. We use a square for flexibility. */
+            /* Enforces a 1:1 square aspect ratio based on padding-top */
             padding-top: 100%; 
-            background-color: #ddd; /* Placeholder color behind the image */
+            background-color: #ddd; 
         }
         
-        /* UPDATED: This image fills the container using 'contain' */
+        /* Image Element Styling (Display full image without cropping) */
         .image-card img {
             width: 100%;
             height: 100%;
             display: block;
-            
-            /* NEW: Absolute positioning to place it inside the padded container */
             position: absolute;
             top: 0;
             left: 0;
-
-            /* CHANGED: Scales the entire image to fit inside the container, adding white space (letterboxing) if needed */
+            /* Scale image to fit within the container (no cropping) */
             object-fit: contain; 
         }
         
+        /* Image Caption Styling */
         .image-caption {
             font-family: 'Heebo', sans-serif;
             padding: 15px;
             font-size: 0.9rem;
             color: #555;
-            /* NEW: Uses remaining space in the 400px card height */
+            /* Allow caption area to expand vertically to fill remaining card space */
             flex-grow: 1; 
             display: flex;
-            align-items: center; /* Vertically centers the caption if needed */
+            align-items: center; 
             justify-content: center;
-            min-height: 40px; /* Ensure space for one line of text */
+            min-height: 40px; 
         }
     </style>
 
@@ -179,9 +167,9 @@
 
     <div class="main-container">
         
-        <!-- HEADER: Hamburger on left, Title on right -->
+        <!-- Page Header -->
         <header class="page-header">
-            <!-- REORDERED: Button is now the first child -->
+            <!-- Menu Toggle Button -->
             <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu" id="menu-toggle-btn">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -191,7 +179,7 @@
             <h1>Pictures</h1>
         </header>
 
-        <!-- NAVIGATION: This is the full-screen overlay when the button is clicked -->
+        <!-- Main Navigation Overlay -->
         <nav class="main-nav" id="main-menu">
             <a href="index.html">Home</a>
             <a href="music.html">Songs</a>
@@ -203,9 +191,9 @@
             
             <div class="image-grid">
                 
-                <!-- PHOTO 1: UPLOAD THIS FILE TO YOUR REPOSITORY IN A FOLDER NAMED 'images' -->
+                <!-- Image Card Component: Duplicate this block for each picture -->
                 <div class="image-card">
-                    <!-- NEW: Image wrapper for aspect ratio control -->
+                    <!-- Image Wrapper to maintain 1:1 aspect ratio -->
                     <div class="image-image-container">
                         <img src="Plattsburgh.jpg" 
                              alt="Finding the Plattsburgh sound"
@@ -215,7 +203,7 @@
                     <div class="image-caption">Finding the Plattsburgh sound.</div>
                 </div>
                 
-                <!-- PHOTO 2: REPLACE THIS BLOCK WITH YOUR SECOND PICTURE -->
+                <!-- Image Card Component -->
                 <div class="image-card">
                     <div class="image-image-container">
                         <img src="TheFourth.jpg" 
@@ -226,7 +214,7 @@
                     <div class="image-caption">Fun hats.</div>
                 </div>
                 
-                <!-- PHOTO 3: REPLACE THIS BLOCK WITH YOUR THIRD PICTURE -->
+                <!-- Image Card Component -->
                 <div class="image-card">
                     <div class="image-image-container">
                         <img src="IMOnABoat.jpg" 
@@ -237,14 +225,14 @@
                     <div class="image-caption">Dirty on a boat.</div>
                 </div>
                 
-                <!-- TIP: To add more pictures, simply copy and paste an entire <div class="image-card"> block here! -->
+                <!-- Add more <div class="image-card"> blocks here for additional pictures -->
 
             </div>
         </div>
 
     </div>
 
-    <!-- JAVASCRIPT: To handle the menu open/close functionality -->
+    <!-- Script: Menu Toggle Functionality -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuButton = document.getElementById('menu-toggle-btn');
@@ -253,17 +241,16 @@
             menuButton.addEventListener('click', () => {
                 const isExpanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
                 
-                // Toggle the 'open' class on the navigation menu
+                // Toggle 'open' class on menu for visual state change
                 navMenu.classList.toggle('open');
                 
-                // Update aria attributes for accessibility
+                // Update ARIA for screen readers
                 menuButton.setAttribute('aria-expanded', !isExpanded);
             });
             
-            // Close menu if a link is clicked (useful on mobile)
+            // Auto-close menu when a navigation link is clicked
             navMenu.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
-                    // We only close the menu if it's currently open
                     if (navMenu.classList.contains('open')) {
                         navMenu.classList.remove('open');
                         menuButton.setAttribute('aria-expanded', 'false');
