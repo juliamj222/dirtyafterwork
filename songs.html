@@ -25,35 +25,30 @@
             font-size: clamp(2rem, 8vw, 4rem); 
         }
         
-        /* Layout: Flex container for header elements (icon and title) */
+        /* --- Page Header Layout (Fixed Position) --- */
+        
+        /* CONSOLIDATED RULE: This defines the fixed header behavior and display */
         .page-header {
             display: flex;
             /* Align content to the far left */
             justify-content: flex-start; 
             align-items: center;
             width: 100%;
-            position: relative; /* Changed from fixed, see note below */
-            padding: 0 20px;
-        }
-
-        /* NEW: We need to style the main container to account for the header height. 
-           We're going to make the header fixed again, but apply padding to the body.
-        */
-        
-        /* Re-apply fixed header and add padding to main-container */
-        .page-header {
-            position: fixed; /* Make header fixed so it stays when scrolling */
+            /* Make header fixed so it stays when scrolling */
+            position: fixed; 
             top: 0;
             left: 0;
             background: white; /* Ensure header content is always visible */
             box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
             z-index: 999;
+            padding: 0 20px; /* Padding for the left/right edges */
+            height: 70px; /* Fixed height for consistency */
         }
 
         /* NEW STYLE: Padding for the entire body content to push it below the fixed header */
         .main-container {
-            /* Adjust padding based on the header's height (approx 80px) */
-            padding-top: 200px;
+            /* Adjust padding based on the header's height (70px + a little extra) */
+            padding-top: 90px;
             /* Existing styles: */
             min-height: 100vh;
         }
@@ -202,7 +197,7 @@
         <!-- Main Navigation Overlay -->
         <nav class="main-nav" id="main-menu">
             <a href="index.html">Home</a>
-            <a href="pictures.html">Pictures</a>
+            <a href="images.html">Pictures</a>
             <a href="lyrics.html">Lyrics</a>
             <a href="about.html">About</a>
         </nav>
@@ -316,5 +311,3 @@
 
 </body>
 </html>
-
-
