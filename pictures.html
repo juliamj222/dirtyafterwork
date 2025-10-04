@@ -17,6 +17,12 @@
 
     <!-- Internal Page-Specific Styles (High-Specificity Overrides) -->
     <style>
+        /* Universal Reset: Ensure no default browser margins interfere */
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
         /* CSS Specificity Fix: Ensure H1 uses brand font and establishes header layout */
         h1 {
             font-family: 'Rock Salt', cursive !important; 
@@ -25,16 +31,29 @@
             font-size: clamp(2rem, 8vw, 4rem); 
         }
         
-        /* Layout: Flex container for header elements (icon and title) */
+        /* --- Page Header Layout (Now RELATIVE/SCROLLING) --- */
+        
+        /* CONSOLIDATED RULE: Defines the header layout and ensures adequate separation */
         .page-header {
             display: flex;
             /* Align content to the far left */
             justify-content: flex-start; 
             align-items: center;
             width: 100%;
-            position: relative;
-            padding: 0 20px;
+            position: relative; 
+            
+            /* Consolidated padding */
+            padding: 20px; 
+            
+            /* FIX: Aggressively increased margin to GUARANTEE separation from the first image card */
+            margin-bottom: 50px; /* Reduced from 80px in songs.html, but still generous */
         }
+
+        /* The main container is only a wrapper here */
+        .main-container {
+            min-height: 100vh;
+        }
+
 
         /* --- Global Off-Canvas Navigation Styles (Hamburger Menu) --- */
         
@@ -72,7 +91,7 @@
         .main-nav a {
             font-size: 2rem; 
             margin: 1.5rem 0;
-            font-family: 'Heebo', sans-serif; 
+            font-family: 'Heebo', sans-serif; 
         }
 
         /* Hamburger icon bars */
@@ -89,7 +108,10 @@
         /* Main Content Wrapper */
         .content-section {
             font-family: 'Heebo', sans-serif;
-            padding: 40px 20px;
+            
+            /* CLEANED UP PADDING: Relies on .page-header margin-bottom for top spacing */
+            padding: 0 20px 40px 20px; 
+            
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
@@ -101,7 +123,7 @@
             /* Auto-fit columns, ensuring a minimum width of 300px per card */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 10px;
-            margin-top: 30px;
+            /* REMOVED margin-top: 30px; to allow margin-bottom on header to control spacing */
         }
         
         /* Media Query: Desktop Override for fixed 3-Column Layout */
@@ -262,4 +284,3 @@
 
 </body>
 </html>
-
