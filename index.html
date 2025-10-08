@@ -9,34 +9,84 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
-    
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shared.css">
+
+    <style>
+        /* Override page-header to remove it from sight, but keep for nav functionality */
+        .page-header {
+            position: absolute; /* Keep it in the layout but visually hidden */
+            top: 20px;
+            left: 20px;
+        }
+
+        /* Unique centering for the homepage content */
+        .homepage-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%; /* Take up full space within main-container */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .homepage-content h1 {
+            font-family: 'Rock Salt', cursive;
+            font-weight: normal;
+            font-size: clamp(2.5rem, 10vw, 7rem);
+            line-height: 1.2;
+            margin: 0;
+            color: #222;
+        }
+        
+        .homepage-content p {
+            font-family: 'Rock Salt', cursive;
+            font-size: clamp(1rem, 4vw, 2.2rem);
+            margin: 1rem 0 0 0;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
 
     <div class="main-container">
-        <h1>Dirty After Work.</h1>
-        <p>A Website.</p>
-        
-<header class="page-header">
-    
-    <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu" id="menu-toggle-btn">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </button>
-    
-    <h1>Pictures</h1> </header>
 
-<nav class="main-nav" id="main-menu">
-    <a href="index.html">Home</a>
-    <a href="songs.html">Songs</a>
-    <a href="lyrics.html">Lyrics</a>
-    <a href="about.html">About</a>
-</nav>
+        <header class="page-header">
+            <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu" id="menu-toggle-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            </header>
+
+        <nav class="main-nav" id="main-menu">
+            <a href="index.html">Home</a>
+            <a href="songs.html">Songs</a>
+            <a href="lyrics.html">Lyrics</a>
+            <a href="about.html">About</a>
+        </nav>
+
+        <div class="homepage-content">
+            <h1>Dirty After Work.</h1>
+            <p>A Website.</p>
+        </div>
+
     </div>
+
+    <footer class="site-footer">
+        <div class="social-links">
+            <a href="#" title="Bandcamp">Bandcamp</a>
+            <a href="#" title="Spotify">Spotify</a>
+            <a href="#" title="Instagram">Instagram</a>
+        </div>
+        <p>&copy; 2025 Dirty After Work. All Rights Reserved.</p>
+    </footer>
+
+    <script src="shared.js" defer></script>
 
 </body>
 </html>
