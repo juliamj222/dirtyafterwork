@@ -31,22 +31,22 @@
             font-size: clamp(2rem, 8vw, 4rem); 
         }
         
-        /* --- Page Header Layout (Now RELATIVE/SCROLLING) --- */
+        /* --- Page Header Layout (RELATIVE/SCROLLING) --- */
         
-        /* CONSOLIDATED RULE: Defines the header layout and ensures adequate separation */
+        /* Defines the header layout and ensures adequate separation */
         .page-header {
             display: flex;
             /* Align content to the far left */
             justify-content: flex-start; 
             align-items: center;
             width: 100%;
-            position: relative; 
+            position: relative; /* Header scrolls with content (not fixed) */
             
-            /* Consolidated padding */
+            /* Consolidated padding for inner content */
             padding: 20px; 
             
-            /* FIX: Increased margin from 50px to 160px to GUARANTEE separation on mobile */
-            margin-bottom: 160px; 
+            /* FIX: Aggressive margin-bottom (120px) to GUARANTEE separation on mobile devices */
+            margin-bottom: 120px; 
         }
 
         /* The main container is only a wrapper here */
@@ -109,7 +109,7 @@
         .content-section {
             font-family: 'Heebo', sans-serif;
             
-            /* CLEANED UP PADDING: Relies entirely on .page-header margin-bottom for top spacing */
+            /* Padding for inner content (top spacing handled by .page-header margin-bottom) */
             padding: 0 15px 30px 15px; 
             
             max-width: 1200px;
@@ -283,6 +283,3 @@
 
 </body>
 </html>
-
-
-
