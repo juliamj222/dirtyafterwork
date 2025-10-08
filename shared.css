@@ -1,12 +1,13 @@
 /*
  * shared.css
- * Common layout styles for page headers, navigation, and footer.
+ * Common layout styles for the "Dirty After Work" website.
  */
 
 /* 1. Base & Resets */
 html {
     height: 100%;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -22,16 +23,24 @@ body {
 
 .main-container {
     flex-grow: 1;
+    padding-top: 120px; /* Pushes content below the fixed header */
 }
+
 
 /* 2. Page Header */
 .page-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 100%;
     padding: 20px;
-    position: relative; /* This is the correct default position */
     box-sizing: border-box;
 }
 
@@ -40,17 +49,18 @@ body {
     margin: 0 0 0 20px;
     font-size: clamp(2rem, 8vw, 4rem);
     font-weight: normal;
-    color: rgba(255, 255, 255, 0.97); /* Ensure title is visible on light backgrounds */
+    color: #222; /* Dark text for the light header background */
 }
 
-/* 3. Off-Canvas Navigation (Slide-In Menu) */
+
+/* 3. Off-Canvas Navigation */
 .menu-toggle {
     display: block;
     background: none;
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 1001;
+    z-index: 1001; /* Above the fixed header */
 }
 
 .bar {
@@ -58,11 +68,12 @@ body {
     width: 25px;
     height: 3px;
     margin: 5px auto;
-    background-color: #f1f1f1; /* Changed to a light color */
+    background-color: #333; /* Dark bars for the light header background */
     transition: all 0.3s ease-in-out;
     border-radius: 2px;
 }
 
+/* Hamburger-to-X animation */
 .menu-toggle.active .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
@@ -73,6 +84,7 @@ body {
     transform: translateY(-8px) rotate(-45deg);
 }
 
+/* Slide-in menu panel */
 .main-nav {
     position: fixed;
     top: 0;
@@ -105,6 +117,7 @@ body {
     text-align: left;
 }
 
+/* Dark page overlay when nav is open */
 body.nav-open {
     overflow: hidden;
 }
@@ -120,6 +133,7 @@ body.nav-open::before {
     z-index: 999;
 }
 
+
 /* 4. Content Sections */
 .content-section {
     font-family: 'Heebo', sans-serif;
@@ -134,6 +148,7 @@ body.nav-open::before {
     background-color: rgba(255, 255, 255, 0.97);
     border: 1px solid #ddd;
 }
+
 
 /* 5. Footer */
 .site-footer {
