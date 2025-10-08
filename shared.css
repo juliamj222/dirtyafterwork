@@ -1,0 +1,92 @@
+/*
+ * shared.css
+ * Common layout styles for page headers and off-canvas navigation.
+ */
+
+/* 1. Base & Resets */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    min-height: 100vh;
+}
+
+/* 2. Page Header */
+/* Flex container for nav toggle and title */
+.page-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    position: relative;
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+/* Page titles within the header */
+.page-header h1 {
+    font-family: 'Rock Salt', cursive;
+    margin: 0 0 0 20px; /* Space between icon and title */
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: normal;
+}
+
+/* 3. Off-Canvas Navigation (Hamburger Menu) */
+.menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Above the overlay */
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #333;
+    transition: all 0.3s ease-in-out;
+    border-radius: 2px;
+}
+
+/* The full-screen overlay */
+.main-nav {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+    z-index: 1000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Toggled by JS to show the menu */
+.main-nav.open {
+    display: flex;
+}
+
+.main-nav a {
+    font-size: 2rem;
+    margin: 1.5rem 0;
+    font-family: 'Heebo', sans-serif;
+    color: #444;
+    text-decoration: none;
+}
+
+/* 4. Content Sections */
+/* Generic wrapper for page content below the header */
+.content-section {
+    font-family: 'Heebo', sans-serif;
+    padding: 0 15px 30px 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
