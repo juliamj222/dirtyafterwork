@@ -45,9 +45,18 @@
             /* Consolidated padding for inner content */
             padding: 20px; 
             
-            /* FIX: Aggressive margin-bottom (120px) to GUARANTEE separation on mobile devices */
-            margin-bottom: 120px; 
+            /* FIX: Mobile Default Margin: Sufficient space for phones/tablets */
+            margin-bottom: 80px; 
         }
+
+        /* NEW MEDIA QUERY: Reduces margin significantly for desktop screens */
+        @media (min-width: 1024px) {
+            .page-header {
+                /* Reduced margin for desktop views (less space needed) */
+                margin-bottom: 40px; 
+            }
+        }
+
 
         /* The main container is only a wrapper here */
         .main-container {
