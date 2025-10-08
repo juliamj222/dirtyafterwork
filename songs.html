@@ -31,23 +31,22 @@
             font-size: clamp(2rem, 8vw, 4rem); 
         }
         
-        /* --- Page Header Layout (Now RELATIVE/SCROLLING) --- */
+        /* --- Page Header Layout (RELATIVE/SCROLLING) --- */
         
-        /* CONSOLIDATED RULE: Defines the header layout using styles from pictures.html */
+        /* Defines the header layout and ensures adequate separation */
         .page-header {
             display: flex;
             /* Align content to the far left */
             justify-content: flex-start; 
             align-items: center;
             width: 100%;
-            /* RESTORED: Header is now relative and scrolls with the page content */
             position: relative; 
             
-            /* Consolidated padding */
+            /* Consolidated padding for inner content */
             padding: 20px; 
             
-            /* FIX: Increased margin to GUARANTEE separation from the first song card */
-            margin-bottom: 80px; 
+            /* FIX: Aggressive margin-bottom to GUARANTEE separation from the first song card (120px) */
+            margin-bottom: 120px; 
         }
 
         /* The main container is only a wrapper here */
@@ -118,7 +117,7 @@
             text-align: center;
         }
         
-        /* Desktop Margin Fix (Top and Bottom) */
+        /* Desktop Margin Fix (Bottom) */
         @media (min-width: 1024px) {
             .content-section {
                 /* Larger bottom padding on desktop */
@@ -145,14 +144,14 @@
             }
         }
         
-        /* Styling for each song card/container */
+        /* Styling for each song card/container (Compacted Height) */
         .song-card {
             background-color: #f7f7f7;
             border-radius: 8px;
-            /* REDUCED PADDING for smaller card height */
-            padding: 15px; 
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             text-align: left;
+            /* REDUCED PADDING for smaller card height */
+            padding: 15px; 
         }
 
         .song-card h2 {
@@ -321,4 +320,3 @@
 
 </body>
 </html>
-
