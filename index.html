@@ -14,42 +14,45 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="shared.css">
 
-    <style>
-        /* Override page-header to remove it from sight, but keep for nav functionality */
-        .page-header {
-            position: absolute; /* Keep it in the layout but visually hidden */
-            top: 20px;
-            left: 20px;
-        }
+<style>
+    /* Override page-header to keep it available for nav functionality but out of sight */
+    .page-header {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
 
-        /* Unique centering for the homepage content */
-        .homepage-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            height: 100%; /* Take up full space within main-container */
-            padding: 20px;
-            box-sizing: border-box;
-        }
+    /* Unique centering for the homepage content */
+    .homepage-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
 
-        .homepage-content h1 {
-            font-family: 'Rock Salt', cursive;
-            font-weight: normal;
-            font-size: clamp(2.5rem, 10vw, 7rem);
-            line-height: 1.2;
-            margin: 0;
-            color: #222;
-        }
-        
-        .homepage-content p {
-            font-family: 'Rock Salt', cursive;
-            font-size: clamp(1rem, 4vw, 2.2rem);
-            margin: 1rem 0 0 0;
-            color: #333;
-        }
-    </style>
+    /* --- THIS IS THE FIX --- */
+    /* Make the homepage titles readable against the dark background */
+    .homepage-content h1 {
+        font-family: 'Rock Salt', cursive;
+        font-weight: normal;
+        font-size: clamp(2.5rem, 10vw, 7rem);
+        line-height: 1.2;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.95); /* Changed to white */
+    }
+    
+    .homepage-content p {
+        font-family: 'Rock Salt', cursive;
+        font-size: clamp(1rem, 4vw, 2.2rem);
+        margin: 1rem 0 0 0;
+        color: rgba(255, 255, 255, 0.85); /* Changed to white */
+    }
+</style>
+    
 </head>
 <body>
 
