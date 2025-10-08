@@ -125,27 +125,8 @@
 
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuButton = document.getElementById('menu-toggle-btn');
-            const navMenu = document.getElementById('main-menu');
-
-            menuButton.addEventListener('click', () => {
-                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-                navMenu.classList.toggle('open');
-                menuButton.setAttribute('aria-expanded', !isExpanded);
-            });
-            
-            navMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (navMenu.classList.contains('open')) {
-                        navMenu.classList.remove('open');
-                        menuButton.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="shared.js" defer></script>
 
 </body>
 </html>
+
