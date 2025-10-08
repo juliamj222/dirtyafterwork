@@ -15,64 +15,43 @@
     <link rel="stylesheet" href="shared.css">
 
     <style>
-        .page-header {
-            /* Add some bottom margin to separate header from content */
-            margin-bottom: 40px;
-        }
-
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 10px;
-        }
-
-        @media (min-width: 768px) {
-            .image-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .image-image-container {
-                padding-top: 75%; /* 4:3 aspect ratio */
-            }
-        }
-        
-        .image-card {
-            background-color: #f7f7f7;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .image-image-container {
-            position: relative;
-            width: 100%;
-            padding-top: 100%; /* 1:1 aspect ratio by default */
-            background-color: #ddd;
-        }
-        
-        .image-card img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: contain;
-        }
-        
-        .image-caption {
-            font-family: 'Heebo', sans-serif;
-            padding: 15px;
-            font-size: 0.9rem;
-            color: #555;
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 40px;
-        }
-    </style>
+    .image-grid {
+        display: grid;
+        /* This rule automatically creates responsive columns */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px; /* Increased gap for better spacing */
+        padding: 20px; /* Add padding around the whole grid */
+        box-sizing: border-box;
+    }
+    
+    .image-card {
+        border-radius: 8px;
+        overflow: hidden; /* Ensures image corners are rounded */
+        display: flex;
+        flex-direction: column;
+        /* The background/border is now in shared.css, so it's not needed here */
+    }
+    
+    /* --- NEW, SIMPLIFIED IMAGE STYLES --- */
+    .image-card img {
+        display: block; /* Removes any extra space below the image */
+        width: 100%;   /* Makes the image fill the card's width */
+        height: auto;  /* Browser calculates height automatically to keep aspect ratio */
+    }
+    
+    .image-caption {
+        font-family: 'Heebo', sans-serif;
+        padding: 15px;
+        font-size: 0.9rem;
+        color: #555;
+        text-align: center;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+    }
+</style>
 
 </head>
 <body>
@@ -100,23 +79,17 @@
             <div class="image-grid">
                 
                 <div class="image-card">
-                    <div class="image-image-container">
                         <img src="Plattsburgh.jpg" alt="Finding the Plattsburgh sound" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" loading="lazy">
-                    </div>
                     <div class="image-caption">Finding the Plattsburgh sound.</div>
                 </div>
                 
                 <div class="image-card">
-                    <div class="image-image-container">
                         <img src="TheFourth.jpg" alt="Fun hats" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" loading="lazy">
-                    </div>
                     <div class="image-caption">Fun hats.</div>
                 </div>
                 
                 <div class="image-card">
-                    <div class="image-image-container">
                         <img src="IMOnABoat.jpg" alt="Dirty on a boat" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" loading="lazy">
-                    </div>
                     <div class="image-caption">Dirty on a boat.</div>
                 </div>
 
@@ -129,4 +102,5 @@
 
 </body>
 </html>
+
 
