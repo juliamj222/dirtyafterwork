@@ -1,4 +1,47 @@
-/* in shared.css, REPLACE the old section 3 */
+/*
+ * shared.css
+ * Common layout styles for page headers, navigation, and footer.
+ */
+
+/* 1. Base & Resets */
+html {
+    height: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Heebo', sans-serif;
+    background-color: #222;
+    background-image: url('background-texture.png');
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+.main-container {
+    flex-grow: 1;
+}
+
+/* 2. Page Header */
+.page-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.page-header h1 {
+    font-family: 'Rock Salt', cursive;
+    margin: 0 0 0 20px;
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: normal;
+    color: #222; /* Ensure title is visible on light backgrounds */
+}
 
 /* 3. Off-Canvas Navigation (Slide-In Menu) */
 .menu-toggle {
@@ -20,26 +63,28 @@
     border-radius: 2px;
 }
 
-/* --- NEW SLIDE-IN MENU STYLES --- */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 .main-nav {
-    /* Positioning */
     position: fixed;
     top: 0;
     right: 0;
     height: 100vh;
     z-index: 1000;
-
-    /* Sizing and Appearance */
-    width: 300px; /* Fixed width for the side menu */
-    max-width: 80vw; /* Ensure it's not too wide on small screens */
+    width: 300px;
+    max-width: 80vw;
     background-color: #f8f9fa;
     box-shadow: -4px 0 15px rgba(0,0,0,0.1);
-
-    /* Hide menu off-screen by default */
     transform: translateX(100%);
     transition: transform 0.4s ease-in-out;
-
-    /* Flexbox for link alignment */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,7 +92,6 @@
     box-sizing: border-box;
 }
 
-/* This class makes the menu slide into view */
 .main-nav.open {
     transform: translateX(0);
 }
@@ -58,16 +102,13 @@
     font-family: 'Heebo', sans-serif;
     color: #444;
     text-decoration: none;
-    text-align: left; /* Align links to the left */
+    text-align: left;
 }
 
-/* --- NEW PAGE OVERLAY STYLES --- */
-/* Lock body scrolling when nav is open */
 body.nav-open {
     overflow: hidden;
 }
 
-/* Dark overlay for the page content */
 body.nav-open::before {
     content: '';
     position: fixed;
@@ -76,5 +117,48 @@ body.nav-open::before {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 999; /* Position it below the nav but above all other content */
+    z-index: 999;
+}
+
+/* 4. Content Sections */
+.content-section {
+    font-family: 'Heebo', sans-serif;
+    padding: 0 15px 30px 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.song-card,
+.image-card {
+    background-color: rgba(255, 255, 255, 0.97);
+    border: 1px solid #ddd;
+}
+
+/* 5. Footer */
+.site-footer {
+    padding: 2rem 1rem;
+    background-color: #f8f9fa;
+    text-align: center;
+    color: #6c757d;
+    font-size: 0.9rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.site-footer .social-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color 0.2s ease-in-out;
+}
+
+.site-footer .social-links a:hover {
+    color: #000;
+}
+
+.site-footer p {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #888;
 }
