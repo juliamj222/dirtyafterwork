@@ -40,7 +40,7 @@ body {
     margin: 0 0 0 20px;
     font-size: clamp(2rem, 8vw, 4rem);
     font-weight: normal;
-    color: #222; /* Ensure title is visible on light backgrounds */
+    color: #e6e1e1; /* Ensure title is visible on light backgrounds */
 }
 
 /* 3. Off-Canvas Navigation (Slide-In Menu) */
