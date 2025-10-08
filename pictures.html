@@ -6,189 +6,71 @@
     
     <title>Dirty After Work | Pictures</title>
     
-    <!-- External Dependencies: Load fonts (Rock Salt for headings, Heebo for body text) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- Shared Stylesheet for global rules -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shared.css">
 
-    <!-- Internal Page-Specific Styles (High-Specificity Overrides) -->
     <style>
-        /* Universal Reset: Ensure no default browser margins interfere */
-        html, body {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* CSS Specificity Fix: Ensure H1 uses brand font and establishes header layout */
-        h1 {
-            font-family: 'Rock Salt', cursive !important; 
-            /* Push title away from the hamburger icon */
-            margin: 0 0 0 20px; 
-            font-size: clamp(2rem, 8vw, 4rem); 
-        }
-        
-        /* --- Page Header Layout (RELATIVE/SCROLLING) --- */
-        
-        /* Defines the header layout and ensures adequate separation */
         .page-header {
-            display: flex;
-            /* Align content to the far left */
-            justify-content: flex-start; 
-            align-items: center;
-            width: 100%;
-            position: relative; /* Header scrolls with content (not fixed) */
-            
-            /* Consolidated padding for inner content */
-            padding: 20px; 
-            
-            /* FIX: Mobile Default Margin: Sufficient space for phones/tablets */
-            margin-bottom: 80px; 
+            /* Add some bottom margin to separate header from content */
+            margin-bottom: 40px;
         }
 
-        /* NEW MEDIA QUERY: Reduces margin significantly for desktop screens */
-        @media (min-width: 1024px) {
-            .page-header {
-                /* Reduced margin for desktop views (less space needed) */
-                margin-bottom: 40px; 
-            }
-        }
-
-
-        /* The main container is only a wrapper here */
-        .main-container {
-            min-height: 100vh;
-        }
-
-
-        /* --- Global Off-Canvas Navigation Styles (Hamburger Menu) --- */
-        
-        /* Menu Toggle Button: Visible on all breakpoints */
-        .menu-toggle {
-            display: block; 
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 1001; /* Layering context above the nav overlay */
-        }
-        
-        /* Off-Canvas Navigation: Hidden by default (Full-screen overlay when open) */
-        .main-nav {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.98); 
-            z-index: 1000;
-            flex-direction: column; 
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Class added by JS to activate the menu overlay */
-        .main-nav.open {
-            display: flex;
-        }
-        
-        /* Navigation Links: Large, accessible touch targets */
-        .main-nav a {
-            font-size: 2rem; 
-            margin: 1.5rem 0;
-            font-family: 'Heebo', sans-serif; 
-        }
-
-        /* Hamburger icon bars */
-        .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            background-color: #333;
-            transition: all 0.3s ease-in-out;
-            border-radius: 2px;
-        }
-        
-        /* Main Content Wrapper */
-        .content-section {
-            font-family: 'Heebo', sans-serif;
-            
-            /* Padding for inner content (top spacing handled by .page-header margin-bottom) */
-            padding: 0 15px 30px 15px; 
-            
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        /* Image Grid Layout (Mobile/Tablet Default) */
         .image-grid {
             display: grid;
-            /* Auto-fit columns, ensuring a minimum width of 300px per card */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 10px;
         }
-        
-        /* Media Query: Desktop Override for fixed 3-Column Layout */
+
         @media (min-width: 768px) {
             .image-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
             .image-image-container {
-                /* Adjust aspect ratio for a wider desktop view, using a 4:3 ratio */
-                padding-top: 75%; 
+                padding-top: 75%; /* 4:3 aspect ratio */
             }
         }
         
-        /* Image Card Container Styling */
         .image-card {
             background-color: #f7f7f7;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            /* Use Flex to stack image container and caption */
-            display: flex; 
+            display: flex;
             flex-direction: column;
         }
         
-        /* Image Aspect Ratio Wrapper */
         .image-image-container {
             position: relative;
             width: 100%;
-            /* Enforces a 1:1 square aspect ratio based on padding-top */
-            padding-top: 100%; 
-            background-color: #ddd; 
+            padding-top: 100%; /* 1:1 aspect ratio by default */
+            background-color: #ddd;
         }
         
-        /* Image Element Styling (Display full image without cropping) */
         .image-card img {
-            width: 100%;
-            height: 100%;
-            display: block;
             position: absolute;
             top: 0;
             left: 0;
-            /* Scale image to fit within the container (no cropping) */
-            object-fit: contain; 
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
         }
         
-        /* Image Caption Styling */
         .image-caption {
             font-family: 'Heebo', sans-serif;
             padding: 15px;
             font-size: 0.9rem;
             color: #555;
-            /* Allow caption area to expand vertically to fill remaining card space */
-            flex-grow: 1; 
+            flex-grow: 1;
             display: flex;
-            align-items: center; 
+            align-items: center;
             justify-content: center;
-            min-height: 40px; 
+            min-height: 40px;
         }
     </style>
 
@@ -197,9 +79,7 @@
 
     <div class="main-container">
         
-        <!-- Page Header -->
         <header class="page-header">
-            <!-- Menu Toggle Button -->
             <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu" id="menu-toggle-btn">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -209,7 +89,6 @@
             <h1>Pictures</h1>
         </header>
 
-        <!-- Main Navigation Overlay -->
         <nav class="main-nav" id="main-menu">
             <a href="index.html">Home</a>
             <a href="songs.html">Songs</a>
@@ -221,64 +100,43 @@
             
             <div class="image-grid">
                 
-                <!-- Image Card Component: Duplicate this block for each picture -->
                 <div class="image-card">
-                    <!-- Image Wrapper to maintain 1:1 aspect ratio -->
                     <div class="image-image-container">
-                        <img src="Plattsburgh.jpg" 
-                             alt="Finding the Plattsburgh sound"
-                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" 
-                             loading="lazy">
+                        <img src="Plattsburgh.jpg" alt="Finding the Plattsburgh sound" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" loading="lazy">
                     </div>
                     <div class="image-caption">Finding the Plattsburgh sound.</div>
                 </div>
                 
-                <!-- Image Card Component -->
                 <div class="image-card">
                     <div class="image-image-container">
-                        <img src="TheFourth.jpg" 
-                             alt="Fun hats" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" 
-                             loading="lazy">
+                        <img src="TheFourth.jpg" alt="Fun hats" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" loading="lazy">
                     </div>
                     <div class="image-caption">Fun hats.</div>
                 </div>
                 
-                <!-- Image Card Component -->
                 <div class="image-card">
                     <div class="image-image-container">
-                        <img src="IMOnABoat.jpg" 
-                             alt="Dirty on a boat" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" 
-                             loading="lazy">
+                        <img src="IMOnABoat.jpg" alt="Dirty on a boat" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'" loading="lazy">
                     </div>
                     <div class="image-caption">Dirty on a boat.</div>
                 </div>
-                
-                <!-- Add more <div class="image-card"> blocks here for additional pictures -->
 
             </div>
         </div>
 
     </div>
 
-    <!-- Script: Menu Toggle Functionality -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuButton = document.getElementById('menu-toggle-btn');
             const navMenu = document.getElementById('main-menu');
 
             menuButton.addEventListener('click', () => {
-                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
-                
-                // Toggle 'open' class on menu for visual state change
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
                 navMenu.classList.toggle('open');
-                
-                // Update ARIA for screen readers
                 menuButton.setAttribute('aria-expanded', !isExpanded);
             });
             
-            // Auto-close menu when a navigation link is clicked
             navMenu.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     if (navMenu.classList.contains('open')) {
