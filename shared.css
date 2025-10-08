@@ -90,3 +90,18 @@ html, body {
     margin: 0 auto;
     text-align: center;
 }
+
+/* Add this to the end of shared.css */
+
+/* 3a. Nav Toggle Animation */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
