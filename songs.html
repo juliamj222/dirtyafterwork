@@ -6,152 +6,43 @@
     
     <title>Dirty After Work | Songs</title>
     
-    <!-- External Dependencies: Load fonts (Rock Salt for headings, Heebo for body text) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- Shared Stylesheet for global rules -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shared.css">
 
-    <!-- Internal Page-Specific Styles (High-Specificity Overrides) -->
     <style>
-        /* Universal Reset: Ensure no default browser margins interfere */
-        html, body {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* CSS Specificity Fix: Ensure H1 uses brand font and establishes header layout */
-        h1 {
-            font-family: 'Rock Salt', cursive !important; 
-            /* Push title away from the hamburger icon */
-            margin: 0 0 0 20px; 
-            font-size: clamp(2rem, 8vw, 4rem); 
-        }
-        
-        /* --- Page Header Layout (RELATIVE/SCROLLING) --- */
-        
-        /* Defines the header layout and ensures adequate separation */
         .page-header {
-            display: flex;
-            /* Align content to the far left */
-            justify-content: flex-start; 
-            align-items: center;
-            width: 100%;
-            position: relative; 
-            
-            /* Consolidated padding for inner content */
-            padding: 20px; 
-            
-            /* FIX: Aggressive margin-bottom to GUARANTEE separation from the first song card (120px) */
-            margin-bottom: 120px; 
+            /* Extra space for the songs page layout */
+            margin-bottom: 60px;
         }
 
-        /* The main container is only a wrapper here */
-        .main-container {
-            min-height: 100vh;
-        }
-
-
-        /* --- Global Off-Canvas Navigation Styles (Hamburger Menu) --- */
-        
-        /* Menu Toggle Button: Visible on all breakpoints */
-        .menu-toggle {
-            display: block; 
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 1001; /* Layering context above the nav overlay */
-        }
-        
-        /* Off-Canvas Navigation: Hidden by default (Full-screen overlay when open) */
-        .main-nav {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.98); 
-            z-index: 1000;
-            flex-direction: column; 
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Class added by JS to activate the menu overlay */
-        .main-nav.open {
-            display: flex;
-        }
-        
-        /* Navigation Links: Large, accessible touch targets */
-        .main-nav a {
-            font-size: 2rem; 
-            margin: 1.5rem 0;
-            font-family: 'Heebo', sans-serif; 
-        }
-
-        /* Hamburger icon bars */
-        .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            background-color: #333;
-            transition: all 0.3s ease-in-out;
-            border-radius: 2px;
-        }
-        
-        /* Main Content Wrapper */
         .content-section {
-            font-family: 'Heebo', sans-serif;
-            
-            /* Cleaned up padding, relies on .page-header margin-bottom for top spacing */
-            padding: 0 20px 40px 20px; 
-            
-            max-width: 800px; 
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        /* Desktop Margin Fix (Bottom) */
-        @media (min-width: 1024px) {
-            .content-section {
-                /* Larger bottom padding on desktop */
-                padding-bottom: 80px; 
-            }
+            max-width: 800px;
         }
 
-        /* --- SONG/MEDIA LIST STYLES --- */
-        
-        /* Layout for media items: Responsive Grid */
         .media-list {
             display: grid;
-            /* Default to single column on mobile/tablet */
             grid-template-columns: 1fr;
             gap: 30px;
         }
 
-        /* Desktop Override: 2-column layout for screens wider than 768px */
         @media (min-width: 768px) {
             .media-list {
-                /* Forces 2 columns side-by-side (2x2 grid for 4 items) */
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 40px; /* Slightly increase gap for desktop */
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
             }
         }
         
-        /* Styling for each song card/container (Compacted Height) */
         .song-card {
             background-color: #f7f7f7;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             text-align: left;
-            /* REDUCED PADDING for smaller card height */
-            padding: 15px; 
+            padding: 15px;
         }
 
         .song-card h2 {
@@ -161,33 +52,10 @@
             color: #333;
         }
 
-        .song-card p {
-            font-size: 1rem;
-            color: #666;
-            /* REDUCED BOTTOM MARGIN for smaller space after text */
-            margin-bottom: 15px; 
-        }
-
-        /* Standard HTML5 Audio Controls */
         .song-card audio {
-            width: 100%; /* Make players fill the container */
+            width: 100%;
             margin-top: 10px;
-            border-radius: 4px;
-            /* Consistent styling for the native player */
-            background-color: #fff;
-            border: 1px solid #ddd;
         }
-        
-        /* Targeting the audio player elements for visual consistency */
-        .song-card audio::-webkit-media-controls-panel {
-            background-color: #eee;
-            color: #333;
-        }
-        .song-card audio::-webkit-media-controls-play-button {
-            background-color: #ccc;
-            border-radius: 50%;
-        }
-        
     </style>
 
 </head>
@@ -195,9 +63,7 @@
 
     <div class="main-container">
         
-        <!-- Page Header -->
         <header class="page-header">
-            <!-- Menu Toggle Button -->
             <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu" id="menu-toggle-btn">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -207,7 +73,6 @@
             <h1>Songs</h1>
         </header>
 
-        <!-- Main Navigation Overlay -->
         <nav class="main-nav" id="main-menu">
             <a href="index.html">Home</a>
             <a href="pictures.html">Pictures</a>
@@ -219,53 +84,39 @@
             
             <div class="media-list">
                 
-                <!-- SONG CARD 1: AUDIO FILE EXAMPLE -->
                 <div class="song-card">
                     <h2>Buy This Piece of Plastic </h2>
-                    
-                    <!-- HTML5 AUDIO PLAYER -->
                     <audio controls class="single-audio-player">
                         <source src="BuyThisPieceOfPlastic.mp3" type="audio/mpeg">
                         Your browser does not support the audio element.
                     </audio>
-
                     <a href="lyrics.html#song-one" style="display: block; margin-top: 10px; text-align: right; color: #555; text-decoration: underline;">View Lyrics</a>
                 </div>
                 
-                <!-- SONG CARD 2: AUDIO FILE EXAMPLE (Converted from Video) -->
                 <div class="song-card">
                     <h2>My Pals + Bender</h2>
-                    
-                    <!-- HTML5 AUDIO PLAYER -->
                     <audio controls class="single-audio-player">
                         <source src="MyPals+W.mp3" type="audio/mpeg">
                         Your browser does not support the audio element.
                     </audio>
-
                     <a href="lyrics.html#song-two" style="display: block; margin-top: 10px; text-align: right; color: #555; text-decoration: underline;">View Lyrics</a>
                 </div>
                 
-                <!-- SONG CARD 3: ANOTHER AUDIO EXAMPLE -->
                 <div class="song-card">
                     <h2>One More Beer</h2>
-                    
                     <audio controls class="single-audio-player">
                         <source src="OneMoreBeer.mp3" type="audio/mpeg">
                         Your browser does not support the audio element.
                     </audio>
-                    
                     <a href="lyrics.html#song-three" style="display: block; margin-top: 10px; text-align: right; color: #555; text-decoration: underline;">View Lyrics</a>
                 </div>
                 
-                <!-- SONG CARD 4: ADDED MISSING ANCHOR TAG FOR LAST CARD -->
                 <div class="song-card">
                     <h2>Beds Are Burning (cover)</h2>
-                    
                     <audio controls class="single-audio-player">
                         <source src="BedsAreBurning.mp3" type="audio/mpeg">
                         Your browser does not support the audio element.
                     </audio>
-                    
                     <a href="lyrics.html#song-four" style="display: block; margin-top: 10px; text-align: right; color: #555; text-decoration: underline;">View Lyrics</a>
                 </div>
                 
@@ -274,24 +125,19 @@
 
     </div>
 
-    <!-- Script: Menu Toggle Functionality and Audio Control Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuButton = document.getElementById('menu-toggle-btn');
             const navMenu = document.getElementById('main-menu');
-            
-            // Get all audio players on the page
             const audioPlayers = document.querySelectorAll('.single-audio-player');
-
 
             // --- Menu Toggle Logic ---
             menuButton.addEventListener('click', () => {
-                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
                 navMenu.classList.toggle('open');
                 menuButton.setAttribute('aria-expanded', !isExpanded);
             });
             
-            // Auto-close menu when a navigation link is clicked
             navMenu.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     if (navMenu.classList.contains('open')) {
@@ -301,15 +147,11 @@
                 });
             });
 
-            // --- Audio Control Logic ---
+            // --- Audio Control: Only one player at a time ---
             audioPlayers.forEach(player => {
-                // Attach a 'play' event listener to each player
                 player.addEventListener('play', (event) => {
-                    // When this player starts, iterate through ALL players
                     audioPlayers.forEach(otherPlayer => {
-                        // Check if the other player is NOT the one that just started AND it's currently playing
                         if (otherPlayer !== event.target && !otherPlayer.paused) {
-                            // If it is, pause the other player
                             otherPlayer.pause();
                         }
                     });
