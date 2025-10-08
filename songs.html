@@ -125,40 +125,9 @@
 
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuButton = document.getElementById('menu-toggle-btn');
-            const navMenu = document.getElementById('main-menu');
-            const audioPlayers = document.querySelectorAll('.single-audio-player');
+    <script src="shared.js" defer></script>
 
-            // --- Menu Toggle Logic ---
-            menuButton.addEventListener('click', () => {
-                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-                navMenu.classList.toggle('open');
-                menuButton.setAttribute('aria-expanded', !isExpanded);
-            });
-            
-            navMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (navMenu.classList.contains('open')) {
-                        navMenu.classList.remove('open');
-                        menuButton.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            });
-
-            // --- Audio Control: Only one player at a time ---
-            audioPlayers.forEach(player => {
-                player.addEventListener('play', (event) => {
-                    audioPlayers.forEach(otherPlayer => {
-                        if (otherPlayer !== event.target && !otherPlayer.paused) {
-                            otherPlayer.pause();
-                        }
-                    });
-                });
-            });
-        });
-    </script>
 
 </body>
 </html>
+
