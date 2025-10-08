@@ -33,6 +33,7 @@ body {
     padding: 20px;
     position: relative;
     box-sizing: border-box;
+    color: rgba(255, 255, 255, 0.97);
 }
 
 .page-header h1 {
@@ -40,7 +41,7 @@ body {
     margin: 0 0 0 20px;
     font-size: clamp(2rem, 8vw, 4rem);
     font-weight: normal;
-    color: #e6e1e1; /* Ensure title is visible on light backgrounds */
+    color: rgba(255, 255, 255, 0.97); /* Ensure title is visible on light backgrounds */
 }
 
 /* 3. Off-Canvas Navigation (Slide-In Menu) */
