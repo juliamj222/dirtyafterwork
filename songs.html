@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dirty After Work | Songs</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="shared.css" />
+
+    <style>
+      .page-header {
+        margin-bottom: 60px;
+        text-align: center; /* Centers the "Songs" title */
+      }
+
+      /* This was blocking the centering - we set it to margin: auto */
+      .content-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .media-list {
+        display: grid;
+        /* This forces exactly 2 columns on desktop */
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        padding: 20px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .song-card {
+        background: #fff;
+        color: #222;
+        padding: 25px;
+        border-radius: 12px;
+        border-left: 10px solid #444;
+        width: 100%; /* Let the grid control the width */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .song-card h2 {
+        font-family: "Heebo", sans-serif;
+        font-size: 1.5rem; /* Slightly smaller to fit 2-column layout better */
+        margin-top: 0;
+        color: #333;
+      }
+
+      .song-card audio {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      /* Mobile Specific Tweak */
+      @media (max-width: 800px) {
+        .media-list {
+          grid-template-columns: 1fr; /* 1 column for tablets and phones */
+          gap: 20px;
+        }
+
+        .content-section {
+          max-width: 500px; /* Keeps cards from getting too wide on mobile */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="page-header">
+        <h1>Songs</h1>
+
+        <button
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="main-menu"
+          id="menu-toggle-btn"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </header>
+
+      <nav class="main-nav" id="main-menu">
+        <a href="index.html">Home</a>
+        <a href="songs.html">Songs</a>
+        <a href="pictures.html">Pictures</a>
+        <a href="shows.html">Shows</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <div class="content-section">
+        <div class="media-list">
+          <div class="song-card">
+            <h2>Piece of Plastic</h2>
+            <audio controls class="single-audio-player">
+              <source
+                src="/assets/audio/PieceOfPlastic.mp3"
+                type="audio/mpeg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>Party Guy</h2>
+            <audio controls class="single-audio-player">
+              <source src="/assets/audio/PartyGuy.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>Flatlander</h2>
+            <audio controls class="single-audio-player">
+              <source src="/assets/audio/Flatlander.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>My Pals + Bender (live)</h2>
+            <audio controls class="single-audio-player">
+              <source src="/assets/audio/MyPals+W.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>One More Beer (live)</h2>
+            <audio controls class="single-audio-player">
+              <source src="/assets/audio/OneMoreBeer.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>Beds Are Burning (cover)</h2>
+            <audio controls class="single-audio-player">
+              <source
+                src="/assets/audio/BedsAreBurning.mp3"
+                type="audio/mpeg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="site-footer">
+      <div class="social-links">
+        <a
+          href="https://dirtyafterwork.bandcamp.com/album/a-demo"
+          target="_blank"
+          >Bandcamp</a
+        >
+      </div>
+      <p>&copy; 2026 Dirty After Work. All Rights Reserved.</p>
+    </footer>
+    <script src="shared.js" defer></script>
+  </body>
+</html>

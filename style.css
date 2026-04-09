@@ -1,0 +1,70 @@
+/* style.css */
+.homepage-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical center */
+  align-items: center; /* Horizontal center */
+  padding: 20px;
+}
+
+.homepage-content h1 {
+  font-family: "Rock Salt", cursive;
+  font-size: clamp(2.5rem, 12vw, 8rem);
+  margin: 0;
+  color: white;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+  line-height: 1;
+}
+
+.homepage-content p {
+  font-family: "Rock Salt", cursive;
+  font-size: clamp(1rem, 5vw, 2.5rem);
+  color: #888;
+  margin-top: 20px;
+}
+
+/* Sticky Footer Logic */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  flex: 1 0 auto; /* Pushes the footer down */
+}
+
+/* Footer Styling */
+.site-footer {
+  flex-shrink: 0;
+  background-color: #000; /* Deep black to match your screenshot */
+  padding: 40px 20px;
+  text-align: center;
+  color: #ffffff;
+  font-family: "Heebo", sans-serif;
+}
+
+.site-footer .social-links a {
+  color: #ffffff; /* red*/
+  text-decoration: none;
+  font-size: 1rem;
+  transition: opacity 0.3s ease;
+}
+
+.site-footer .social-links a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.site-footer p {
+  margin-top: 15px;
+  font-size: 0.8rem;
+  color: #ffffff;
+  opacity: 0.9;
+}

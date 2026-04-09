@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dirty After Work | About</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rock+Salt&family=Heebo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="stylesheet" href="shared.css" />
+    <style>
+      .about-section {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+        color: white;
+      }
+
+      .bio-text {
+        font-family: "Heebo", sans-serif;
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+        line-height: 1.6;
+        margin-bottom: 60px;
+        border-left: 4px solid white;
+        padding-left: 20px;
+        text-align: left;
+      }
+
+      .lineup-grid {
+        display: grid;
+        /* This forces 2 equal columns by default */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      /* When the screen is narrower than 600px (phones) */
+      @media (max-width: 600px) {
+        .lineup-grid {
+          /* Switch back to 1 column so names aren't squished */
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .member-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .member-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.1);
+        border-color: white;
+      }
+
+      .member-name {
+        font-family: "Rock Salt", cursive;
+        font-size: 1.1rem;
+        color: white;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .member-role {
+        font-family: "Heebo", sans-serif;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #ccc;
+      }
+
+      .coyote-shoutout {
+        margin-top: 80px;
+        font-family: "Heebo", sans-serif;
+        font-size: 1.5rem;
+        padding-bottom: 40px; /* This will also help space it from the footer */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="page-header">
+        <h1>About</h1>
+
+        <button
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="main-menu"
+          id="menu-toggle-btn"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </header>
+
+      <nav class="main-nav" id="main-menu">
+        <a href="index.html">Home</a>
+        <a href="pictures.html">Pictures</a>
+        <a href="songs.html">Songs</a>
+        <a href="shows.html">Shows</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <div class="about-section">
+        <div class="bio-text">
+          <p>
+            Dirty After Work plays original punk rock music in central and
+            northern Vermont, with the occasional venture across the lake to
+            Plattsburgh, NY.
+          </p>
+        </div>
+
+        <div class="lineup-grid">
+          <div class="member-card">
+            <span class="member-name">Drew Diemar</span>
+            <span class="member-role">Guitar & Vocals</span>
+          </div>
+
+          <div class="member-card">
+            <span class="member-name">Willis Schenk</span>
+            <span class="member-role">Guitar & Vocals</span>
+          </div>
+
+          <div class="member-card">
+            <span class="member-name">Dylan Hancock</span>
+            <span class="member-role">Bass & Vocals</span>
+          </div>
+
+          <div class="member-card">
+            <span class="member-name">Garret White</span>
+            <span class="member-role">Drums & Commentary</span>
+          </div>
+        </div>
+
+        <p class="coyote-shoutout">
+          "It's a liver for the coyotes kind of band."
+        </p>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="social-links">
+        <a
+          href="https://dirtyafterwork.bandcamp.com/album/a-demo"
+          target="_blank"
+          >Bandcamp</a
+        >
+      </div>
+      <p>&copy; 2026 Dirty After Work. All Rights Reserved.</p>
+    </footer>
+
+    <script src="shared.js" defer></script>
+  </body>
+</html>

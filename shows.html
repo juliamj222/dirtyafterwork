@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dirty After Work | Shows</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rock+Salt&family=Heebo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="shared.css" />
+
+    <style>
+      .shows-list {
+        max-width: 800px;
+        margin: 40px auto;
+        /* Padding: Top Right Bottom Left */
+        padding: 0 20px 80px 20px;
+        text-align: left;
+      }
+
+      .show-item {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 20px 0;
+        /* This creates the gap between date and location */
+        gap: 40px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .show-item:hover {
+        background: rgba(255, 255, 255, 0.05);
+        padding-left: 10px;
+      }
+
+      .date {
+        font-family: "Heebo", sans-serif;
+        font-weight: bold;
+        color: #888;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        /* Keeps locations aligned vertically */
+        min-width: 180px;
+      }
+
+      .location {
+        font-family: "Rock Salt", cursive;
+        font-size: 1.2rem;
+        color: white;
+      }
+
+      /* Mobile adjustment */
+      @media (max-width: 600px) {
+        .show-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 5px;
+        }
+        .date {
+          min-width: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="page-header">
+        <h1>Shows</h1>
+        <button
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="main-menu"
+          id="menu-toggle-btn"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </header>
+
+      <nav class="main-nav" id="main-menu">
+        <a href="index.html">Home</a>
+        <a href="pictures.html">Pictures</a>
+        <a href="songs.html">Songs</a>
+        <a href="shows.html">Shows</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <div class="shows-list">
+        <div class="show-item">
+          <span class="date">April 10th, 2026</span>
+          <span class="location">Plattsburgh</span>
+        </div>
+
+        <div class="show-item">
+          <span class="date">June 5th, 2026</span>
+          <span class="location">Burlington</span>
+        </div>
+
+        <div class="show-item">
+          <span class="date">November 22nd, 2025</span>
+          <span class="location">Winooski Basement</span>
+        </div>
+
+        <div class="show-item">
+          <span class="date">July 4th, 2025</span>
+          <span class="location">Warren Cabin</span>
+        </div>
+
+        <div class="show-item">
+          <span class="date">May 10th, 2025</span>
+          <span class="location">Brookfield</span>
+        </div>
+
+        <div class="show-item">
+          <span class="date">May 12th, 2023</span>
+          <span class="location">Winooski Garage</span>
+        </div>
+
+        <div class="show-item">
+          <span class="date">April 15th, 2023</span>
+          <span class="location">Plattsburgh</span>
+        </div>
+
+        <div class="show-item">
+          <span class="date">November 2nd, 2019</span>
+          <span class="location">Duxbury</span>
+        </div>
+
+        <div class="show-item">
+          <span class="date">One Day in 2009</span>
+          <span class="location">The busted party in Burlington</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="social-links">
+        <a
+          href="https://dirtyafterwork.bandcamp.com/album/a-demo"
+          target="_blank"
+          >Bandcamp</a
+        >
+      </div>
+      <p>&copy; 2026 Dirty After Work. All Rights Reserved.</p>
+    </footer>
+
+    <script src="shared.js" defer></script>
+  </body>
+</html>
