@@ -23,10 +23,9 @@
     <style>
       .page-header {
         margin-bottom: 60px;
-        text-align: center; /* Centers the "Songs" title */
+        text-align: center;
       }
 
-      /* This was blocking the centering - we set it to margin: auto */
       .content-section {
         max-width: 1200px;
         margin: 0 auto;
@@ -35,7 +34,6 @@
 
       .media-list {
         display: grid;
-        /* This forces exactly 2 columns on desktop */
         grid-template-columns: 1fr 1fr;
         gap: 30px;
         padding: 20px;
@@ -49,13 +47,13 @@
         padding: 25px;
         border-radius: 12px;
         border-left: 10px solid #444;
-        width: 100%; /* Let the grid control the width */
+        width: 100%;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       }
 
       .song-card h2 {
         font-family: "Heebo", sans-serif;
-        font-size: 1.5rem; /* Slightly smaller to fit 2-column layout better */
+        font-size: 1.5rem;
         margin-top: 0;
         color: #333;
       }
@@ -65,7 +63,14 @@
         margin-top: 10px;
       }
 
-      /* Mobile Specific Tweak */
+      .song-card video {
+        width: 100%;
+        margin-top: 10px;
+        background: #000;
+        border-radius: 4px;
+      }
+
+      /* Mobile */
       @media (max-width: 800px) {
         .media-list {
           grid-template-columns: 1fr; /* 1 column for tablets and phones */
@@ -133,6 +138,113 @@
           </div>
 
           <div class="song-card">
+            <h2>Break Your Cellphone (live)</h2>
+            <audio controls class="single-audio-player">
+              <source
+                src="/assets/audio/BreakYourCellPhoneLive.mp3"
+                type="audio/mpeg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>Human Obstacle (live)</h2>
+            <audio controls class="single-audio-player">
+              <source
+                src="/assets/audio/HumanObstacleLive.mp3"
+                type="audio/mpeg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>She Don´t Do That (live)</h2>
+            <audio controls class="single-audio-player">
+              <source
+                src="/assets/audio/SheDontDoThatLive.mp3"
+                type="audio/mpeg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>Running (live)</h2>
+            <audio controls class="single-audio-player">
+              <source src="/assets/audio/RunningLive.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>Johnny Paycheck (live)</h2>
+            <audio controls class="single-audio-player">
+              <source
+                src="/assets/audio/JohnnyPaycheckLive.mp3"
+                type="audio/mpeg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>The Plattsburgh Sound (live)</h2>
+            <audio controls class="single-audio-player">
+              <source
+                src="/assets/audio/ThePlattsburghSoundLive.mp3"
+                type="audio/mpeg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>Gut Feeling (fragment, live)</h2>
+            <audio controls class="single-audio-player">
+              <source
+                src="/assets/audio/GutFeelingLive.mp3"
+                type="audio/mpeg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>Same Mistake Again (live)</h2>
+            <audio controls class="single-audio-player">
+              <source
+                src="/assets/audio/SameMistakeAgainLive.mp3"
+                type="audio/mpeg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>Sandwiches (live)</h2>
+            <audio controls class="single-audio-player">
+              <source
+                src="/assets/audio/SandwichesLive.mp3"
+                type="audio/mpeg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>One More Beer (live)</h2>
+            <audio controls class="single-audio-player">
+              <source
+                src="/assets/audio/OneMoreBeerLive.mp3"
+                type="audio/mpeg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="song-card">
             <h2>My Pals + Bender (live)</h2>
             <audio controls class="single-audio-player">
               <source src="/assets/audio/MyPals+W.mp3" type="audio/mpeg" />
@@ -141,9 +253,12 @@
           </div>
 
           <div class="song-card">
-            <h2>One More Beer (live)</h2>
+            <h2>I Got Stripes (cover)</h2>
             <audio controls class="single-audio-player">
-              <source src="/assets/audio/OneMoreBeer.mp3" type="audio/mpeg" />
+              <source
+                src="/assets/audio/IGotStripesLive.mp3"
+                type="audio/mpeg"
+              />
               Your browser does not support the audio element.
             </audio>
           </div>
@@ -157,6 +272,17 @@
               />
               Your browser does not support the audio element.
             </audio>
+          </div>
+
+          <div class="song-card">
+            <h2>Add It Up (cover, Dirty and Friends)</h2>
+            <video controls class="single-video-player">
+              <source
+                src="/assets/video/AddItUpLiveSmall.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video element.
+            </video>
           </div>
         </div>
       </div>

@@ -18,31 +18,31 @@
     <style>
       .image-grid {
         display: flex;
-        flex-direction: column; /* Forces them into a single column */
-        align-items: center; /* Centers the column on the page */
-        gap: 40px; /* Spacing between cards */
-        padding: 20px 20px 80px 20px; /* Extra padding at bottom for footer clearance */
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 20px 20px 80px 20px;
         box-sizing: border-box;
       }
 
       .image-card {
-        background: #fff; /* White background like the song cards */
+        background: #fff;
         color: #222;
         border-radius: 12px;
-        border-left: 10px solid #444; /* Matching the song card accent */
+        border-left: 10px solid #444;
         overflow: hidden;
         display: flex;
         flex-direction: column;
         width: 100%;
-        max-width: 600px; /* Sets a consistent width for all cards */
+        max-width: 600px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       }
 
       .image-card img {
         display: block;
         width: 100%;
-        height: 400px; /* Forces all images to the same height */
-        object-fit: cover; /* Crops images to fill the area without stretching */
+        height: 400px;
+        object-fit: cover;
       }
 
       .image-caption {
@@ -54,7 +54,7 @@
         text-align: center;
       }
 
-      /* Mobile adjustment: make images slightly shorter so they fit better */
+      /* Mobile adjustment*/
       @media (max-width: 600px) {
         .image-card img {
           height: 300px;
@@ -90,14 +90,38 @@
         <div class="image-grid">
           <div class="image-card">
             <img
-              src="/assets/images/Plattsburgh.jpg"
-              alt="Finding the Plattsburgh sound"
+              src="/assets/images/FerryWestBound.jpg"
+              alt="Ferry Westbound."
               onerror="
                 this.src =
                   'https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'
               "
             />
-            <div class="image-caption">Finding the Plattsburgh sound.</div>
+            <div class="image-caption">Ferry Westbound.</div>
+          </div>
+
+          <div class="image-card">
+            <img
+              src="/assets/images/monopole.jpg"
+              alt="Monopole."
+              onerror="
+                this.src =
+                  'https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'
+              "
+            />
+            <div class="image-caption">Monopole.</div>
+          </div>
+
+          <div class="image-card">
+            <img
+              src="/assets/images/BandsInTheMonopole.jpg"
+              alt="Friendly Bands."
+              onerror="
+                this.src =
+                  'https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'
+              "
+            />
+            <div class="image-caption">Friendly Bands.</div>
           </div>
 
           <div class="image-card">
@@ -122,6 +146,18 @@
               "
             />
             <div class="image-caption">Dirty on a boat.</div>
+          </div>
+
+          <div class="image-card">
+            <img
+              src="/assets/images/Plattsburgh.jpg"
+              alt="Finding the Plattsburgh sound"
+              onerror="
+                this.src =
+                  'https://placehold.co/600x400/F0F0F0/333333?text=Image+Missing'
+              "
+            />
+            <div class="image-caption">Finding the Plattsburgh sound.</div>
           </div>
         </div>
       </div>
